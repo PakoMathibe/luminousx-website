@@ -33,10 +33,10 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F0B08'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='%23C27A3F' font-family='Georgia' font-weight='bold'%3EX%3C/text%3E%3C/svg%3E">
 
-    <!-- Fonts -->
+    <!-- Fonts — Professional IT (Inter only) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -140,7 +140,7 @@
 </header>
 
 <!-- ============================================
-     PAGE HERO — with background image + overlay
+     PAGE HERO — unified image background
      ============================================ -->
 <section class="page-hero page-hero--image">
     <div class="container">
@@ -163,6 +163,7 @@
 
 <!-- ============================================
      SERVICES — Uniform grid with image headers
+     ⚠️  ICON IS INSIDE .svc-body (fixed — no clipping)
      ============================================ -->
 <section class="section bg-white" id="all-services">
     <div class="container">
@@ -177,12 +178,10 @@
         <div class="services-uniform">
             <article class="svc-card svc-card--img" data-reveal>
                 <div class="svc-img">
-                    <img src="images/custom_software_development.jpg"
-                         alt="Luminous X software development team collaborating on code"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-software"/></svg></div>
+                    <img src="images/custom_software_development.jpg" alt="Luminous X software development team collaborating on code" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-software"/></svg></div>
                     <h3>Custom Software Development</h3>
                     <p>Bespoke enterprise applications, web systems, mobile apps, workflow automation tools, and API integrations precisely aligned to your business.</p>
                     <a href="services/custom-software-development.html" class="svc-arrow">Learn more</a>
@@ -191,12 +190,10 @@
 
             <article class="svc-card svc-card--img" data-reveal data-reveal-delay="1">
                 <div class="svc-img">
-                    <img src="images/hardware_it_infrastructure.jpg"
-                         alt="Luminous X engineer managing enterprise data centre hardware"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-hardware"/></svg></div>
+                    <img src="images/hardware_it_infrastructure.jpg" alt="Luminous X engineer managing enterprise data centre hardware" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-hardware"/></svg></div>
                     <h3>Hardware &amp; IT Infrastructure</h3>
                     <p>End-to-end supply, installation, configuration, and lifecycle management of enterprise equipment.</p>
                     <a href="services/hardware-it-infrastructure.html" class="svc-arrow">Learn more</a>
@@ -205,12 +202,10 @@
 
             <article class="svc-card svc-card--img" data-reveal data-reveal-delay="2">
                 <div class="svc-img">
-                    <img src="images/digital_transformation.jpg"
-                         alt="Executive workspace prepared for digital transformation strategy"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-transform"/></svg></div>
+                    <img src="images/digital_transformation.jpg" alt="Executive workspace prepared for digital transformation strategy" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-transform"/></svg></div>
                     <h3>Digital Transformation</h3>
                     <p>Strategic advisory and hands-on delivery to modernise legacy systems and embed data-driven decisions.</p>
                     <a href="services/digital-transformation.html" class="svc-arrow">Learn more</a>
@@ -219,12 +214,10 @@
 
             <article class="svc-card svc-card--img" data-reveal data-reveal-delay="3">
                 <div class="svc-img">
-                    <img src="images/it_consulting.jpg"
-                         alt="Luminous X consultants advising a client on IT strategy"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-consult"/></svg></div>
+                    <img src="images/it_consulting.jpg" alt="Luminous X consultants advising a client on IT strategy" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-consult"/></svg></div>
                     <h3>IT Consulting &amp; Advisory</h3>
                     <p>Independent audits, strategy, solution architecture, and vendor management aligned with your business.</p>
                     <a href="services/it-consulting-advisory.html" class="svc-arrow">Learn more</a>
@@ -233,12 +226,10 @@
 
             <article class="svc-card svc-card--img" data-reveal>
                 <div class="svc-img">
-                    <img src="images/cloud_solutions.jpg"
-                         alt="Cloud architecture visualised by a Luminous X cloud engineer"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-cloud"/></svg></div>
+                    <img src="images/cloud_solutions.jpg" alt="Cloud architecture visualised by a Luminous X cloud engineer" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-cloud"/></svg></div>
                     <h3>Cloud Solutions</h3>
                     <p>Migration planning, hybrid architecture, SaaS onboarding, and cloud cost optimisation.</p>
                     <a href="services/cloud-solutions.html" class="svc-arrow">Learn more</a>
@@ -247,12 +238,10 @@
 
             <article class="svc-card svc-card--img" data-reveal data-reveal-delay="1">
                 <div class="svc-img">
-                    <img src="images/cybersecurity.jpg"
-                         alt="Luminous X cybersecurity analyst monitoring network defence"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-shield"/></svg></div>
+                    <img src="images/cybersecurity.jpg" alt="Luminous X cybersecurity analyst monitoring network defence" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-shield"/></svg></div>
                     <h3>Cybersecurity</h3>
                     <p>Threat detection, endpoint protection, vulnerability assessments, and POPIA compliance.</p>
                     <a href="services/cybersecurity.html" class="svc-arrow">Learn more</a>
@@ -261,12 +250,10 @@
 
             <article class="svc-card svc-card--img" data-reveal data-reveal-delay="2">
                 <div class="svc-img">
-                    <img src="images/network_solutions.jpg"
-                         alt="Luminous X networking engineer configuring enterprise infrastructure"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-network"/></svg></div>
+                    <img src="images/network_solutions.jpg" alt="Luminous X networking engineer configuring enterprise infrastructure" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-network"/></svg></div>
                     <h3>Networking Solutions</h3>
                     <p>Enterprise LAN/WAN design, structured cabling, wireless deployments, VPNs, and firewalls.</p>
                     <a href="services/networking-solutions.html" class="svc-arrow">Learn more</a>
@@ -275,12 +262,10 @@
 
             <article class="svc-card svc-card--img" data-reveal data-reveal-delay="3">
                 <div class="svc-img">
-                    <img src="images/voip_communications.jpg"
-                         alt="Modern VoIP and unified communications in a Luminous X call centre"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-phone"/></svg></div>
+                    <img src="images/voip_communications.jpg" alt="Modern VoIP and unified communications in a Luminous X call centre" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-phone"/></svg></div>
                     <h3>VoIP &amp; Communications</h3>
                     <p>Cloud PBX, SIP trunking, unified communications, and modern workplace telephony.</p>
                     <a href="services/voip-communications.html" class="svc-arrow">Learn more</a>
@@ -289,12 +274,10 @@
 
             <article class="svc-card svc-card--img" data-reveal>
                 <div class="svc-img">
-                    <img src="images/managed_it_services.jpg"
-                         alt="Luminous X 24/7 operations centre monitoring enterprise systems"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-managed"/></svg></div>
+                    <img src="images/managed_it_services.jpg" alt="Luminous X 24/7 operations centre monitoring enterprise systems" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-managed"/></svg></div>
                     <h3>Managed IT Services</h3>
                     <p>24/7 monitoring, helpdesk, patching, and proactive maintenance under SLA.</p>
                     <a href="services/managed-it-services.html" class="svc-arrow">Learn more</a>
@@ -303,12 +286,10 @@
 
             <article class="svc-card svc-card--img" data-reveal data-reveal-delay="1">
                 <div class="svc-img">
-                    <img src="images/data_analytics_bi.jpg"
-                         alt="Luminous X analyst reviewing business intelligence dashboards"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-analytics"/></svg></div>
+                    <img src="images/data_analytics_bi.jpg" alt="Luminous X analyst reviewing business intelligence dashboards" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-analytics"/></svg></div>
                     <h3>Data Analytics &amp; BI</h3>
                     <p>Dashboards, data warehousing, reporting automation, and predictive analytics.</p>
                     <a href="services/data-analytics-bi.html" class="svc-arrow">Learn more</a>
@@ -317,12 +298,10 @@
 
             <article class="svc-card svc-card--img" data-reveal data-reveal-delay="2">
                 <div class="svc-img">
-                    <img src="images/erp_business_systems.jpg"
-                         alt="Business systems and ERP architecture visualised by Luminous X"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-erp"/></svg></div>
+                    <img src="images/erp_business_systems.jpg" alt="Business systems and ERP architecture visualised by Luminous X" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-erp"/></svg></div>
                     <h3>ERP &amp; Business Systems</h3>
                     <p>ERP, CRM, HR platforms, and business process automation for operational efficiency.</p>
                     <a href="services/erp-business-systems.html" class="svc-arrow">Learn more</a>
@@ -331,12 +310,10 @@
 
             <article class="svc-card svc-card--img" data-reveal data-reveal-delay="3">
                 <div class="svc-img">
-                    <img src="images/ict_training.jpg"
-                         alt="Luminous X ICT training session delivered to enterprise staff"
-                         loading="lazy" width="600" height="375">
-                    <div class="svc-icon-float"><svg><use href="#i-training"/></svg></div>
+                    <img src="images/ict_training.jpg" alt="Luminous X ICT training session delivered to enterprise staff" loading="lazy" width="600" height="375">
                 </div>
                 <div class="svc-body">
+                    <div class="svc-icon-float"><svg><use href="#i-training"/></svg></div>
                     <h3>ICT Training</h3>
                     <p>Corporate upskilling, digital literacy, and youth empowerment programmes.</p>
                     <a href="services/ict-training.html" class="svc-arrow">Learn more</a>
@@ -452,7 +429,6 @@
 
     <div class="industries-wrapper">
         <div class="industries-track">
-            <!-- Set 1 -->
             <div class="ind-card"><div class="ind-icon"><svg><use href="#i-gov"/></svg></div><h4>Government &amp; Public Sector</h4><p>E-services, systems integration, and municipal IT infrastructure.</p></div>
             <div class="ind-card"><div class="ind-icon"><svg><use href="#i-construct"/></svg></div><h4>Construction &amp; Engineering</h4><p>Project management, BIM, and site connectivity.</p></div>
             <div class="ind-card"><div class="ind-icon"><svg><use href="#i-edu"/></svg></div><h4>Education &amp; Training</h4><p>E-learning platforms and campus networks.</p></div>
@@ -462,7 +438,7 @@
             <div class="ind-card"><div class="ind-icon"><svg><use href="#i-mining"/></svg></div><h4>Mining &amp; Resources</h4><p>IoT, real-time monitoring, and OT integration.</p></div>
             <div class="ind-card"><div class="ind-icon"><svg><use href="#i-logistics"/></svg></div><h4>Logistics &amp; Supply Chain</h4><p>Fleet management and route optimisation.</p></div>
             <div class="ind-card"><div class="ind-icon"><svg><use href="#i-legal"/></svg></div><h4>Legal Services</h4><p>Case management and secure document platforms.</p></div>
-            <!-- Set 2 (duplicate for seamless loop) -->
+            <!-- Set 2 -->
             <div class="ind-card"><div class="ind-icon"><svg><use href="#i-gov"/></svg></div><h4>Government &amp; Public Sector</h4><p>E-services, systems integration, and municipal IT infrastructure.</p></div>
             <div class="ind-card"><div class="ind-icon"><svg><use href="#i-construct"/></svg></div><h4>Construction &amp; Engineering</h4><p>Project management, BIM, and site connectivity.</p></div>
             <div class="ind-card"><div class="ind-icon"><svg><use href="#i-edu"/></svg></div><h4>Education &amp; Training</h4><p>E-learning platforms and campus networks.</p></div>
@@ -503,7 +479,7 @@
 </section>
 
 <!-- ============================================
-     CTA FINAL — with background image
+     CTA FINAL — unified image background
      ============================================ -->
 <section class="cta-final cta-final--image">
     <div class="container">
@@ -531,6 +507,11 @@
                     <span class="logo-text">Luminous<em>X</em></span>
                 </a>
                 <p>100% black-owned, Level 1 B-BBEE technology partner delivering enterprise-grade software, cloud, and cybersecurity solutions across South Africa.</p>
+                <div class="footer-brand-social">
+                    <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+                    <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="mailto:info@luminousxtech.co.za" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+                </div>
             </div>
 
             <div class="footer-col">
@@ -563,10 +544,21 @@
 
         <div class="footer-bottom">
             <p>&copy; <span id="currentYear">2025</span> Luminous X Technologies (Pty) Ltd. All rights reserved.</p>
-            <p>Reg: 2019/197828/07 · B-BBEE Level 1 · CIDB: 10233872</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">POPIA</a>
+            </div>
         </div>
     </div>
 </footer>
+
+<!-- ============================================
+     SCROLL TO TOP
+     ============================================ -->
+<button class="scroll-top" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <script src="js/main.js"></script>
 </body>
