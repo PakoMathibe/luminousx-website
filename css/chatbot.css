@@ -1,6 +1,5 @@
 /* ============================================
-   LUMINOUS X CHATBOT — Beast Mode v1.0.0
-   Self-contained AI-grade chat assistant
+   LUMINOUS X CHATBOT
    ============================================ */
 
 :root {
@@ -16,21 +15,26 @@
     --bot-cream: #FEFAF5;
     --bot-white: #FFFFFF;
     --bot-success: #2F7A3E;
+    --bot-error: #E74C3C;
     --bot-radius: 16px;
     --bot-radius-sm: 10px;
+    --bot-radius-lg: 20px;
     --bot-shadow: 0 24px 60px -12px rgba(15, 11, 8, 0.28), 0 8px 20px -8px rgba(15, 11, 8, 0.12);
     --bot-shadow-lg: 0 40px 80px -20px rgba(15, 11, 8, 0.4), 0 16px 32px -12px rgba(15, 11, 8, 0.2);
     --bot-ease: cubic-bezier(0.16, 1, 0.3, 1);
     --bot-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     --bot-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --bot-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --bot-tap: 44px; /* Minimum touch target */
 }
 
-/* ---------- Floating Bubble ---------- */
+/* ============================================
+   FLOATING BUBBLE
+   ============================================ */
 .lxbot-bubble {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: max(24px, env(safe-area-inset-bottom, 0px));
+    right: max(24px, env(safe-area-inset-right, 0px));
     z-index: 9998;
     width: 64px;
     height: 64px;
@@ -45,6 +49,7 @@
     transition: transform 0.4s var(--bot-ease-spring), box-shadow 0.3s var(--bot-ease);
     -webkit-tap-highlight-color: transparent;
     font-family: var(--bot-font);
+    padding: 0;
 }
 
 .lxbot-bubble:hover {
@@ -99,7 +104,7 @@
     min-width: 22px;
     height: 22px;
     border-radius: 11px;
-    background: #E74C3C;
+    background: var(--bot-error);
     color: var(--bot-white);
     font-size: 11px;
     font-weight: 700;
@@ -120,15 +125,17 @@
     100% { transform: scale(1); }
 }
 
-/* ---------- Teaser bubble (proactive) ---------- */
+/* ============================================
+   PROACTIVE TEASER
+   ============================================ */
 .lxbot-teaser {
     position: fixed;
-    bottom: 100px;
-    right: 24px;
-    max-width: 300px;
+    bottom: calc(max(24px, env(safe-area-inset-bottom, 0px)) + 80px);
+    right: max(24px, env(safe-area-inset-right, 0px));
+    max-width: 320px;
     background: var(--bot-white);
     border-radius: var(--bot-radius) var(--bot-radius) var(--bot-radius) 4px;
-    padding: 14px 40px 14px 16px;
+    padding: 16px 44px 16px 18px;
     box-shadow: var(--bot-shadow);
     z-index: 9997;
     font-family: var(--bot-font);
@@ -141,6 +148,8 @@
     transition: all 0.5s var(--bot-ease-spring);
     cursor: pointer;
     border: 1px solid var(--bot-ink-100);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .lxbot-teaser.lxbot-visible {
@@ -157,27 +166,29 @@
 .lxbot-teaser strong {
     color: var(--bot-ink);
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     font-weight: 600;
+    font-size: 14px;
 }
 
 .lxbot-teaser-close {
     position: absolute;
     top: 8px;
     right: 8px;
-    width: 22px;
-    height: 22px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: var(--bot-ink-50);
     border: none;
     color: var(--bot-ink-500);
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1;
     display: grid;
     place-items: center;
     padding: 0;
     transition: all 0.2s var(--bot-ease);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .lxbot-teaser-close:hover {
@@ -185,15 +196,18 @@
     color: var(--bot-ink-700);
 }
 
-/* ---------- Chat Window ---------- */
+/* ============================================
+   CHAT WINDOW
+   ============================================ */
 .lxbot-window {
     position: fixed;
-    bottom: 100px;
-    right: 24px;
+    bottom: calc(max(24px, env(safe-area-inset-bottom, 0px)) + 80px);
+    right: max(24px, env(safe-area-inset-right, 0px));
     width: 400px;
     max-width: calc(100vw - 32px);
     height: 640px;
     max-height: calc(100vh - 140px);
+    max-height: calc(100dvh - 140px);
     background: var(--bot-white);
     border-radius: var(--bot-radius);
     box-shadow: var(--bot-shadow-lg);
@@ -209,6 +223,8 @@
     font-family: var(--bot-font);
     color: var(--bot-ink-700);
     border: 1px solid var(--bot-ink-100);
+    /* Lock into a column layout so messages scroll, not the window */
+    isolation: isolate;
 }
 
 .lxbot-window.lxbot-open {
@@ -217,7 +233,9 @@
     visibility: visible;
 }
 
-/* ---------- Header ---------- */
+/* ============================================
+   HEADER
+   ============================================ */
 .lxbot-header {
     display: flex;
     align-items: center;
@@ -266,7 +284,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #2F7A3E;
+    background: var(--bot-success);
     border: 2px solid var(--bot-ink);
 }
 
@@ -287,7 +305,7 @@
 
 .lxbot-header-status {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.7);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -298,7 +316,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #2F7A3E;
+    background: var(--bot-success);
     box-shadow: 0 0 0 3px rgba(47, 122, 62, 0.2);
     animation: lxbotStatusPulse 2s ease-in-out infinite;
 }
@@ -316,8 +334,8 @@
 }
 
 .lxbot-header-btn {
-    width: 32px;
-    height: 32px;
+    width: var(--bot-tap);
+    height: var(--bot-tap);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.08);
     border: none;
@@ -341,14 +359,17 @@
 }
 
 .lxbot-header-btn svg {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
 }
 
-/* ---------- Messages Area ---------- */
+/* ============================================
+   MESSAGES AREA
+   ============================================ */
 .lxbot-messages {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 20px 18px 12px;
     background: var(--bot-ink-50);
     display: flex;
@@ -357,6 +378,8 @@
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--bot-ink-300) transparent;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
 .lxbot-messages::-webkit-scrollbar {
@@ -376,12 +399,16 @@
     background: var(--bot-ink-500);
 }
 
-/* ---------- Message Row ---------- */
+/* ============================================
+   MESSAGE ROW
+   ============================================ */
 .lxbot-msg {
     display: flex;
     gap: 8px;
-    max-width: 85%;
+    max-width: 88%;
     animation: lxbotMsgIn 0.4s var(--bot-ease) both;
+    /* Prevent overflow with long unbroken strings */
+    min-width: 0;
 }
 
 @keyframes lxbotMsgIn {
@@ -405,8 +432,8 @@
 }
 
 .lxbot-msg-avatar {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--bot-copper) 0%, var(--bot-copper-dark) 100%);
     display: grid;
@@ -414,9 +441,10 @@
     color: var(--bot-white);
     font-family: 'Georgia', serif;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 12px;
     flex-shrink: 0;
     margin-top: 2px;
+    user-select: none;
 }
 
 .lxbot-msg-user .lxbot-msg-avatar {
@@ -424,7 +452,7 @@
 }
 
 .lxbot-msg-bubble {
-    padding: 10px 14px;
+    padding: 11px 15px;
     border-radius: 14px;
     font-size: 14px;
     line-height: 1.55;
@@ -432,8 +460,12 @@
     color: var(--bot-ink-700);
     border: 1px solid var(--bot-ink-100);
     border-bottom-left-radius: 4px;
+    /* Long word handling */
     word-wrap: break-word;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    min-width: 0;
+    max-width: 100%;
     box-shadow: 0 1px 2px rgba(15, 11, 8, 0.03);
 }
 
@@ -459,6 +491,7 @@
     text-decoration: underline;
     text-underline-offset: 2px;
     font-weight: 500;
+    word-break: break-word;
 }
 
 .lxbot-msg-user .lxbot-msg-bubble a {
@@ -466,7 +499,7 @@
 }
 
 .lxbot-msg-bubble ul {
-    margin: 6px 0 2px;
+    margin: 8px 0 4px;
     padding-left: 18px;
     list-style: none;
 }
@@ -474,7 +507,11 @@
 .lxbot-msg-bubble ul li {
     position: relative;
     padding-left: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+}
+
+.lxbot-msg-bubble ul li:last-child {
+    margin-bottom: 0;
 }
 
 .lxbot-msg-bubble ul li::before {
@@ -490,12 +527,14 @@
     color: var(--bot-ink-500);
     font-size: 13px;
     display: block;
-    margin-top: 6px;
-    padding-top: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
     border-top: 1px dashed var(--bot-ink-100);
 }
 
-/* ---------- Typing Indicator ---------- */
+/* ============================================
+   TYPING INDICATOR
+   ============================================ */
 .lxbot-typing {
     display: flex;
     gap: 4px;
@@ -505,7 +544,7 @@
     border-radius: 14px 14px 14px 4px;
     width: fit-content;
     align-self: flex-start;
-    margin-left: 36px;
+    margin-left: 40px;
     animation: lxbotMsgIn 0.3s var(--bot-ease) both;
 }
 
@@ -531,17 +570,19 @@
     }
 }
 
-/* ---------- Quick Replies (Chips) ---------- */
+/* ============================================
+   QUICK REPLIES (CHIPS)
+   ============================================ */
 .lxbot-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin: 4px 0 4px 36px;
+    gap: 8px;
+    margin: 4px 0 4px 40px;
     animation: lxbotMsgIn 0.4s var(--bot-ease) both;
 }
 
 .lxbot-chip {
-    padding: 8px 14px;
+    padding: 10px 16px;
     background: var(--bot-white);
     border: 1px solid var(--bot-copper-light);
     border-radius: 999px;
@@ -554,6 +595,9 @@
     -webkit-tap-highlight-color: transparent;
     white-space: nowrap;
     line-height: 1.3;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .lxbot-chip:hover {
@@ -573,12 +617,14 @@
     outline-offset: 2px;
 }
 
-/* ---------- Rich Cards ---------- */
+/* ============================================
+   RICH CARDS
+   ============================================ */
 .lxbot-cards {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin: 4px 0 4px 36px;
+    margin: 4px 0 4px 40px;
     animation: lxbotMsgIn 0.4s var(--bot-ease) both;
 }
 
@@ -592,12 +638,21 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    text-align: left;
+    font-family: var(--bot-font);
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .lxbot-card:hover {
     border-color: var(--bot-copper);
     transform: translateX(3px);
     box-shadow: 0 4px 12px -4px rgba(194, 122, 63, 0.2);
+}
+
+.lxbot-card:focus-visible {
+    outline: 2px solid var(--bot-copper);
+    outline-offset: 2px;
 }
 
 .lxbot-card-icon {
@@ -624,6 +679,7 @@
     color: var(--bot-ink);
     margin-bottom: 2px;
     line-height: 1.3;
+    word-break: break-word;
 }
 
 .lxbot-card-desc {
@@ -631,19 +687,22 @@
     color: var(--bot-ink-500);
     line-height: 1.45;
     margin: 0;
+    word-break: break-word;
 }
 
-/* ---------- CTA Buttons in messages ---------- */
+/* ============================================
+   CTA BUTTONS
+   ============================================ */
 .lxbot-cta-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin: 8px 0 0 36px;
+    gap: 8px;
+    margin: 8px 0 0 40px;
     animation: lxbotMsgIn 0.4s var(--bot-ease) both;
 }
 
 .lxbot-cta {
-    padding: 10px 16px;
+    padding: 11px 18px;
     border-radius: 10px;
     font-family: var(--bot-font);
     font-size: 13px;
@@ -657,6 +716,8 @@
     align-items: center;
     gap: 6px;
     line-height: 1;
+    min-height: 40px;
+    white-space: nowrap;
 }
 
 .lxbot-cta-primary {
@@ -687,7 +748,9 @@
     outline-offset: 2px;
 }
 
-/* ---------- Input Area ---------- */
+/* ============================================
+   INPUT AREA
+   ============================================ */
 .lxbot-input-area {
     padding: 12px 14px 14px;
     background: var(--bot-white);
@@ -698,11 +761,11 @@
 .lxbot-input-row {
     display: flex;
     align-items: flex-end;
-    gap: 8px;
+    gap: 6px;
     background: var(--bot-ink-50);
     border: 1.5px solid var(--bot-ink-100);
     border-radius: 14px;
-    padding: 6px 6px 6px 14px;
+    padding: 4px 4px 4px 14px;
     transition: all 0.2s var(--bot-ease);
 }
 
@@ -720,11 +783,13 @@
     font-family: var(--bot-font);
     font-size: 14px;
     color: var(--bot-ink);
-    padding: 8px 0;
+    padding: 10px 0;
     resize: none;
-    max-height: 100px;
+    max-height: 120px;
     line-height: 1.5;
-    min-height: 22px;
+    min-height: 24px;
+    /* Prevent iOS zoom on focus */
+    -webkit-text-size-adjust: 100%;
 }
 
 .lxbot-input::placeholder {
@@ -732,8 +797,8 @@
 }
 
 .lxbot-input-btn {
-    width: 36px;
-    height: 36px;
+    width: var(--bot-tap);
+    height: var(--bot-tap);
     border-radius: 10px;
     border: none;
     background: transparent;
@@ -757,6 +822,10 @@
     outline-offset: 2px;
 }
 
+.lxbot-input-btn:disabled {
+    cursor: not-allowed;
+}
+
 .lxbot-input-btn svg {
     width: 18px;
     height: 18px;
@@ -775,14 +844,13 @@
 
 .lxbot-send:disabled {
     opacity: 0.4;
-    cursor: not-allowed;
     background: var(--bot-ink-100);
     color: var(--bot-ink-300);
 }
 
 /* Recording state for voice */
 .lxbot-input-btn.lxbot-recording {
-    background: #E74C3C;
+    background: var(--bot-error);
     color: var(--bot-white);
     animation: lxbotRecPulse 1s ease-in-out infinite;
 }
@@ -792,23 +860,158 @@
     50% { box-shadow: 0 0 0 8px rgba(231, 76, 60, 0); }
 }
 
-/* ---------- Footer hint ---------- */
+/* ============================================
+   FOOTER HINT
+   ============================================ */
 .lxbot-footer-hint {
     text-align: center;
     font-size: 11px;
     color: var(--bot-ink-300);
-    margin-top: 8px;
+    margin-top: 10px;
     font-family: var(--bot-font-mono);
     letter-spacing: 0.04em;
 }
 
-/* ---------- Mobile: full-screen ---------- */
+/* ============================================
+   RESPONSIVE — TABLET (900px and below)
+   ============================================ */
+@media (max-width: 900px) {
+    .lxbot-window {
+        width: 380px;
+        height: 600px;
+    }
+
+    .lxbot-msg {
+        max-width: 90%;
+    }
+
+    .lxbot-chips,
+    .lxbot-cards,
+    .lxbot-cta-group,
+    .lxbot-typing {
+        margin-left: 36px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+    /* Slightly smaller bubble */
+    .lxbot-bubble {
+        width: 58px;
+        height: 58px;
+    }
+
+    .lxbot-bubble svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* Window uses most of the screen but leaves a peek of the page */
+    .lxbot-window {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100vw;
+        max-width: 100vw;
+        height: calc(100vh - 60px);
+        height: calc(100dvh - 60px);
+        max-height: none;
+        border-radius: var(--bot-radius-lg) var(--bot-radius-lg) 0 0;
+        transform-origin: bottom center;
+        transform: translateY(100%);
+    }
+
+    .lxbot-window.lxbot-open {
+        transform: translateY(0) scale(1);
+    }
+
+    /* Teaser adapts */
+    .lxbot-teaser {
+        right: 16px;
+        left: 16px;
+        max-width: none;
+        bottom: calc(max(16px, env(safe-area-inset-bottom, 0px)) + 76px);
+    }
+
+    /* Messages spacing is slightly tighter */
+    .lxbot-messages {
+        padding: 16px 14px 10px;
+        gap: 10px;
+    }
+
+    /* Message bubbles wider on mobile */
+    .lxbot-msg {
+        max-width: 92%;
+    }
+
+    /* Chips and CTAs: horizontally scrollable to prevent wrapping pain */
+    .lxbot-chips {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-left: 36px;
+        margin-right: -14px;
+        padding-right: 14px;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+    }
+
+    .lxbot-chips::-webkit-scrollbar {
+        display: none;
+    }
+
+    .lxbot-chip {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+    }
+
+    .lxbot-cta-group {
+        margin-left: 36px;
+        margin-right: -14px;
+        padding-right: 14px;
+    }
+
+    /* Slightly smaller avatar in header */
+    .lxbot-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    /* iOS safe area top */
+    .lxbot-header {
+        padding-top: max(16px, env(safe-area-inset-top, 16px));
+    }
+
+    /* iOS safe area bottom */
+    .lxbot-input-area {
+        padding-bottom: max(14px, env(safe-area-inset-bottom, 14px));
+    }
+
+    /* Larger input font to prevent iOS zoom */
+    .lxbot-input {
+        font-size: 16px;
+    }
+
+    /* Bigger text for chat bubbles on mobile */
+    .lxbot-msg-bubble {
+        font-size: 14.5px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ============================================ */
 @media (max-width: 480px) {
     .lxbot-bubble {
-        bottom: 16px;
-        right: 16px;
-        width: 56px;
-        height: 56px;
+        width: 54px;
+        height: 54px;
+        bottom: max(16px, env(safe-area-inset-bottom, 0px));
+        right: max(16px, env(safe-area-inset-right, 0px));
     }
 
     .lxbot-bubble svg {
@@ -817,37 +1020,184 @@
     }
 
     .lxbot-window {
-        bottom: 0;
-        right: 0;
-        width: 100vw;
-        max-width: 100vw;
         height: 100vh;
-        max-height: 100vh;
+        height: 100dvh;
         border-radius: 0;
-        transform-origin: bottom center;
-    }
-
-    .lxbot-teaser {
-        bottom: 84px;
-        right: 16px;
-        left: 16px;
-        max-width: none;
-    }
-
-    .lxbot-msg {
-        max-width: 92%;
     }
 
     .lxbot-header {
-        padding-top: max(16px, env(safe-area-inset-top, 16px));
+        padding: 14px 14px;
+        padding-top: max(14px, env(safe-area-inset-top, 14px));
+    }
+
+    .lxbot-header-name {
+        font-size: 14px;
+    }
+
+    .lxbot-header-status {
+        font-size: 11px;
+    }
+
+    .lxbot-messages {
+        padding: 12px 12px 8px;
+    }
+
+    .lxbot-msg {
+        max-width: 94%;
+    }
+
+    .lxbot-msg-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+    }
+
+    .lxbot-msg-bubble {
+        padding: 10px 13px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    .lxbot-chips,
+    .lxbot-cards,
+    .lxbot-cta-group,
+    .lxbot-typing {
+        margin-left: 32px;
+        margin-right: -12px;
+        padding-right: 12px;
+    }
+
+    .lxbot-chip {
+        padding: 9px 14px;
+        font-size: 12.5px;
+        min-height: 36px;
+    }
+
+    .lxbot-card {
+        padding: 11px 12px;
+    }
+
+    .lxbot-card-title {
+        font-size: 13px;
+    }
+
+    .lxbot-card-desc {
+        font-size: 12px;
+    }
+
+    .lxbot-cta {
+        padding: 10px 15px;
+        font-size: 12.5px;
+        min-height: 38px;
     }
 
     .lxbot-input-area {
-        padding-bottom: max(14px, env(safe-area-inset-bottom, 14px));
+        padding: 10px 12px;
+        padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
+    }
+
+    .lxbot-input-row {
+        padding: 3px 3px 3px 12px;
+    }
+
+    .lxbot-footer-hint {
+        font-size: 10px;
+        margin-top: 8px;
     }
 }
 
-/* ---------- Reduced motion ---------- */
+/* ============================================
+   RESPONSIVE — TINY (360px and below)
+   ============================================ */
+@media (max-width: 360px) {
+    :root {
+        --bot-tap: 40px;
+    }
+
+    .lxbot-bubble {
+        width: 50px;
+        height: 50px;
+    }
+
+    .lxbot-bubble svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .lxbot-header {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .lxbot-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .lxbot-avatar::after {
+        width: 10px;
+        height: 10px;
+    }
+
+    .lxbot-header-name {
+        font-size: 13.5px;
+    }
+
+    .lxbot-msg {
+        max-width: 96%;
+    }
+
+    .lxbot-chips,
+    .lxbot-cards,
+    .lxbot-cta-group,
+    .lxbot-typing {
+        margin-left: 28px;
+    }
+
+    .lxbot-footer-hint {
+        display: none; /* Save space on tiny screens */
+    }
+}
+
+/* ============================================
+   LANDSCAPE MOBILE
+   ============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .lxbot-window {
+        bottom: 0;
+        right: 0;
+        left: auto;
+        width: 420px;
+        max-width: 90vw;
+        height: 100vh;
+        height: 100dvh;
+        max-height: 100vh;
+        border-radius: var(--bot-radius-lg) 0 0 var(--bot-radius-lg);
+        transform-origin: bottom right;
+    }
+
+    .lxbot-header {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .lxbot-messages {
+        padding: 12px 14px 8px;
+    }
+
+    .lxbot-input-area {
+        padding: 8px 12px 10px;
+    }
+
+    .lxbot-footer-hint {
+        display: none;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
     .lxbot-bubble,
     .lxbot-window,
@@ -867,7 +1217,48 @@
     }
 }
 
-/* ---------- Print: hide ---------- */
+/* ============================================
+   DARK MODE SUPPORT (respects user preference)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    /* Chatbot window uses its own local token override */
+    .lxbot-window {
+        --bot-white: #1A1512;
+        --bot-ink-50: #0F0B08;
+        --bot-ink-100: #2A211A;
+        --bot-ink-300: #6B5D4F;
+        --bot-ink-500: #B5A595;
+        --bot-ink-700: #D9D0C4;
+        --bot-ink: #F8F5F0;
+        --bot-cream: #1A1512;
+    }
+
+    .lxbot-msg-bubble {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .lxbot-msg-user .lxbot-msg-bubble {
+        background: linear-gradient(135deg, var(--bot-copper-dark) 0%, var(--bot-copper) 100%);
+        color: var(--bot-white);
+        border-color: var(--bot-copper-dark);
+    }
+
+    .lxbot-chip {
+        border-color: rgba(194, 122, 63, 0.4);
+    }
+
+    .lxbot-card {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .lxbot-input-row {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+}
+
+/* ============================================
+   PRINT: HIDE CHATBOT
+   ============================================ */
 @media print {
     .lxbot-bubble,
     .lxbot-window,
