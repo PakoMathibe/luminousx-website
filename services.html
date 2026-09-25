@@ -11,7 +11,6 @@
     <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://www.luminousxtech.co.za/services.html">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.luminousxtech.co.za/services.html">
     <meta property="og:title" content="Our Services | Luminous X Technologies">
@@ -20,28 +19,22 @@
     <meta property="og:locale" content="en_ZA">
     <meta property="og:site_name" content="Luminous X Technologies">
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Our Services | Luminous X Technologies">
     <meta name="twitter:description" content="Comprehensive technology solutions spanning the full enterprise landscape.">
     <meta name="twitter:image" content="https://www.luminousxtech.co.za/images/capability-ecosystem.jpg">
 
-    <!-- Geo -->
     <meta name="geo.region" content="ZA-NW">
     <meta name="geo.placename" content="Mmabatho, North West">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F0B08'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='%23C27A3F' font-family='Georgia' font-weight='bold'%3EX%3C/text%3E%3C/svg%3E">
 
-    <!-- Fonts — Professional IT (Inter only) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -95,10 +88,11 @@
     <symbol id="i-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
 </svg>
 
 <!-- ============================================
-     HEADER
+     HEADER — CONSISTENT WITH INDEX
      ============================================ -->
 <header class="site-header" role="banner">
     <div class="header-inner">
@@ -118,18 +112,114 @@
                 <li class="nav-dropdown">
                     <a href="services.html" class="active">Services</a>
                     <ul class="dropdown-menu">
-                        <li><a href="services/custom-software-development.html">Custom Software Development</a></li>
-                        <li><a href="services/hardware-it-infrastructure.html">Hardware &amp; IT Infrastructure</a></li>
-                        <li><a href="services/digital-transformation.html">Digital Transformation</a></li>
-                        <li><a href="services/it-consulting-advisory.html">IT Consulting &amp; Advisory</a></li>
-                        <li><a href="services/cloud-solutions.html">Cloud Solutions</a></li>
-                        <li><a href="services/cybersecurity.html">Cybersecurity</a></li>
-                        <li><a href="services/networking-solutions.html">Networking Solutions</a></li>
-                        <li><a href="services/voip-communications.html">VoIP &amp; Communications</a></li>
-                        <li><a href="services/managed-it-services.html">Managed IT Services</a></li>
-                        <li><a href="services/data-analytics-bi.html">Data Analytics &amp; BI</a></li>
-                        <li><a href="services/erp-business-systems.html">ERP &amp; Business Systems</a></li>
-                        <li><a href="services/ict-training.html">ICT Training</a></li>
+                        <li>
+                            <a href="services/custom-software-development.html">
+                                <span class="dd-icon"><svg><use href="#i-software"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Custom Software Development</strong>
+                                    <span>Bespoke enterprise applications</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/hardware-it-infrastructure.html">
+                                <span class="dd-icon"><svg><use href="#i-hardware"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Hardware &amp; IT Infrastructure</strong>
+                                    <span>Servers, workstations, networks</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/digital-transformation.html">
+                                <span class="dd-icon"><svg><use href="#i-transform"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Digital Transformation</strong>
+                                    <span>Modernise legacy systems</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/it-consulting-advisory.html">
+                                <span class="dd-icon"><svg><use href="#i-consult"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>IT Consulting &amp; Advisory</strong>
+                                    <span>Independent strategy and audits</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/cloud-solutions.html">
+                                <span class="dd-icon"><svg><use href="#i-cloud"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Cloud Solutions</strong>
+                                    <span>AWS, Azure, Google Cloud</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/cybersecurity.html">
+                                <span class="dd-icon"><svg><use href="#i-shield"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Cybersecurity</strong>
+                                    <span>POPIA, threat detection, EDR</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/networking-solutions.html">
+                                <span class="dd-icon"><svg><use href="#i-network"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Networking Solutions</strong>
+                                    <span>LAN/WAN, Wi-Fi, structured cabling</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/voip-communications.html">
+                                <span class="dd-icon"><svg><use href="#i-phone"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>VoIP &amp; Communications</strong>
+                                    <span>Cloud PBX, SIP trunking</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/managed-it-services.html">
+                                <span class="dd-icon"><svg><use href="#i-managed"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Managed IT Services</strong>
+                                    <span>24/7 monitoring and support</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/data-analytics-bi.html">
+                                <span class="dd-icon"><svg><use href="#i-analytics"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Data Analytics &amp; BI</strong>
+                                    <span>Dashboards and predictive models</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/erp-business-systems.html">
+                                <span class="dd-icon"><svg><use href="#i-erp"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>ERP &amp; Business Systems</strong>
+                                    <span>ERP, CRM, HR platforms</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/ict-training.html">
+                                <span class="dd-icon"><svg><use href="#i-training"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>ICT Training</strong>
+                                    <span>Digital skills and empowerment</span>
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="contact.html">Contact</a></li>
@@ -140,30 +230,83 @@
 </header>
 
 <!-- ============================================
-     PAGE HERO — unified image background
+     PAGE HERO — Split layout with category card
+     Reuses .hero-split from About page
      ============================================ -->
 <section class="page-hero page-hero--image">
     <div class="container">
-        <div style="text-align: center; max-width: 820px; margin-inline: auto;" data-reveal>
-            <nav class="breadcrumb" aria-label="Breadcrumb" style="justify-content: center;">
-                <a href="index.html">Home</a>
-                <span class="sep">/</span>
-                <span>Services</span>
-            </nav>
-            <span class="eyebrow" style="justify-content: center;">What We Do</span>
-            <h1>Twelve disciplines.<br>One technology partner.</h1>
-            <p class="lead" style="margin-top: var(--s-4);">From bespoke software to enterprise infrastructure, we cover every layer of the modern technology stack — engineered for South African organisations.</p>
-            <div class="hero-cta" style="justify-content: center; margin-top: var(--s-8);">
-                <a href="contact.html" class="btn btn-copper btn-lg">Start a project</a>
-                <a href="#all-services" class="btn btn-outline btn-lg">Explore services</a>
+        <div class="hero-split" data-reveal>
+            <div class="hero-split-content">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="sep">/</span>
+                    <span>Services</span>
+                </nav>
+                <span class="eyebrow">What We Do</span>
+                <h1>Twelve disciplines.<br><span style="color: var(--copper-300);">One technology partner.</span></h1>
+                <p class="lead">From bespoke software to enterprise infrastructure, we cover every layer of the modern technology stack — engineered for South African organisations.</p>
+
+                <div class="hero-quick-stats">
+                    <div class="hqs-item">
+                        <span class="hqs-num">12<span class="hqs-accent">+</span></span>
+                        <span class="hqs-lbl">Services</span>
+                    </div>
+                    <div class="hqs-item">
+                        <span class="hqs-num">9<span class="hqs-accent">+</span></span>
+                        <span class="hqs-lbl">Industries</span>
+                    </div>
+                    <div class="hqs-item">
+                        <span class="hqs-num">L<span class="hqs-accent">v</span>1</span>
+                        <span class="hqs-lbl">B-BBEE</span>
+                    </div>
+                    <div class="hqs-item">
+                        <span class="hqs-num">135<span class="hqs-accent">%</span></span>
+                        <span class="hqs-lbl">Procurement</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta" style="margin-top: var(--s-8);">
+                    <a href="contact.html" class="btn btn-copper btn-lg">Start a project</a>
+                    <a href="#all-services" class="btn btn-outline-light btn-lg">Explore services</a>
+                </div>
+            </div>
+
+            <div class="hero-split-visual">
+                <div class="hero-visual-card">
+                    <div class="hvc-head">
+                        <span class="hvc-label">Service Categories</span>
+                        <span class="status">12 Active</span>
+                    </div>
+                    <div class="hvc-category-list">
+                        <a href="#all-services" class="hvc-cat">
+                            <span class="hvc-cat-icon"><svg width="14" height="14"><use href="#i-software"/></svg></span>
+                            <span class="hvc-cat-name">Build &amp; Develop</span>
+                            <span class="hvc-cat-count">03</span>
+                        </a>
+                        <a href="#all-services" class="hvc-cat">
+                            <span class="hvc-cat-icon"><svg width="14" height="14"><use href="#i-shield"/></svg></span>
+                            <span class="hvc-cat-name">Secure &amp; Protect</span>
+                            <span class="hvc-cat-count">03</span>
+                        </a>
+                        <a href="#all-services" class="hvc-cat">
+                            <span class="hvc-cat-icon"><svg width="14" height="14"><use href="#i-cloud"/></svg></span>
+                            <span class="hvc-cat-name">Run &amp; Scale</span>
+                            <span class="hvc-cat-count">03</span>
+                        </a>
+                        <a href="#all-services" class="hvc-cat">
+                            <span class="hvc-cat-icon"><svg width="14" height="14"><use href="#i-analytics"/></svg></span>
+                            <span class="hvc-cat-name">Analyse &amp; Optimise</span>
+                            <span class="hvc-cat-count">03</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ============================================
-     SERVICES — Uniform grid with image headers
-     ⚠️  ICON IS INSIDE .svc-body (fixed — no clipping)
+     SERVICES — Uniform grid
      ============================================ -->
 <section class="section bg-white" id="all-services">
     <div class="container">
@@ -326,7 +469,7 @@
 <!-- ============================================
      PROCESS
      ============================================ -->
-<section class="section bg-cream">
+<section class="section bg-white">
     <div class="container">
         <div class="section-head center" data-reveal>
             <span class="eyebrow">How we work</span>
@@ -362,7 +505,7 @@
 <!-- ============================================
      WHY LUMINOUS X — 8-card grid
      ============================================ -->
-<section class="section bg-white">
+<section class="section bg-cream">
     <div class="container">
         <div class="section-head center" data-reveal>
             <span class="eyebrow">Why Luminous X</span>
@@ -418,7 +561,7 @@
 <!-- ============================================
      INDUSTRIES — MARQUEE
      ============================================ -->
-<section class="section bg-cream" id="industries">
+<section class="section bg-white" id="industries">
     <div class="container">
         <div class="section-head center" data-reveal>
             <span class="eyebrow">Industries</span>
@@ -479,7 +622,7 @@
 </section>
 
 <!-- ============================================
-     CTA FINAL — unified image background
+     CTA FINAL
      ============================================ -->
 <section class="cta-final cta-final--image">
     <div class="container">

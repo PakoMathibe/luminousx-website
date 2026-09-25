@@ -228,141 +228,312 @@
 </header>
 
 <!-- ============================================
-     HERO
+     FEATURED SHOWCASE CAROUSEL
+     Modern full-width image carousel with text
      ============================================ -->
-<section class="hero">
-    <div class="hero-bg"></div>
+<section class="showcase-carousel-section" id="showcase">
     <div class="container">
-        <div class="hero-grid">
-            <div class="hero-content" data-reveal>
-                <span class="hero-eyebrow">
-                    <span class="pill">New</span>
-                    Trusted by South African enterprises
-                </span>
-                <h1>Technology that moves your business <span class="accent">forward.</span></h1>
-                <p class="lead">Luminous X Technologies is a 100% black-owned, Level 1 B-BBEE partner delivering enterprise-grade software, cloud, and cybersecurity solutions across South Africa.</p>
-                <div class="hero-cta">
-                    <a href="contact.html" class="btn btn-copper btn-lg">Start a project</a>
-                    <a href="services.html" class="btn btn-outline btn-lg">Explore services</a>
-                    <div class="hero-trust">
-                        <div class="avatars">
-                            <span>JM</span><span>TK</span><span>NM</span>
+        <div class="section-head center" data-reveal>
+            <span class="eyebrow">Featured Work</span>
+            <h2>See our impact in action.</h2>
+            <p class="lead">From concept to deployment — explore the solutions we've delivered for organisations across South Africa.</p>
+        </div>
+    </div>
+
+    <div class="showcase-carousel" role="region" aria-label="Featured project showcase" data-carousel-autoplay="6000">
+        <!-- Progress bar -->
+        <div class="showcase-progress" aria-hidden="true">
+            <div class="showcase-progress-bar"></div>
+        </div>
+
+        <!-- Slides -->
+        <div class="showcase-track">
+            <!-- Slide 1 -->
+            <article class="showcase-slide active" role="group" aria-label="Slide 1 of 4">
+                <div class="showcase-image">
+                    <img src="images/custom_software_development.jpg"
+                         alt="Custom software development project dashboard"
+                         loading="eager" width="1920" height="1080">
+                    <div class="showcase-overlay"></div>
+                </div>
+                <div class="showcase-content">
+                    <div class="showcase-inner">
+                        <span class="showcase-tag">Software Development</span>
+                        <h3>Enterprise Resource Planning Platform</h3>
+                        <p>A custom ERP solution that streamlined operations for a national logistics company — reducing manual processes by 73% and cutting reporting time from days to minutes.</p>
+                        <div class="showcase-stats">
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="73" data-suffix="%">0%</span>
+                                <span class="stat-label">Process reduction</span>
+                            </div>
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="12" data-suffix="+">0+</span>
+                                <span class="stat-label">Departments integrated</span>
+                            </div>
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="99" data-suffix="%">0%</span>
+                                <span class="stat-label">Uptime achieved</span>
+                            </div>
                         </div>
-                        <span><strong style="color: var(--ink-900)">Level 1</strong> B-BBEE · 135% recognition</span>
+                        <a href="services/custom-software-development.html" class="btn btn-copper btn-arrow">
+                            Explore this service
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div class="hero-visual" data-reveal data-reveal-delay="2">
-                <div class="hero-card">
-                    <div class="hero-card-head">
-                        <h4>Company Snapshot</h4>
-                        <span class="status">Active</span>
-                    </div>
-                    <div class="hero-card-body">
-                        <div class="hero-stat">
-                            <span class="num" data-count="100" data-suffix="%">0%</span>
-                            <span class="lbl">Black-Owned</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="num">L<span class="unit">v</span>1</span>
-                            <span class="lbl">B-BBEE Rating</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="num" data-count="135" data-suffix="%">0%</span>
-                            <span class="lbl">Procurement</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="num" data-count="12" data-suffix="+">0+</span>
-                            <span class="lbl">Services</span>
-                        </div>
-                    </div>
+            </article>
 
-                    <!-- Hero card image -->
-                    <div class="hero-card-img">
-                        <img src="images/our_story.jpg"
-                             alt="Luminous X Technologies executive reviewing digital strategy"
-                             loading="eager" width="600" height="375">
-                    </div>
-
-                    <!-- MODERN HERO SLIDER — control bar below, no overlap -->
-                    <div class="hero-slider">
-                        <div class="hero-slider-track">
-                            <div class="hero-slide">
-                                <span class="dot"></span>
-                                Delivering for government &amp; enterprise since 2019
+            <!-- Slide 2 -->
+            <article class="showcase-slide" role="group" aria-label="Slide 2 of 4">
+                <div class="showcase-image">
+                    <img src="images/cybersecurity.jpg"
+                         alt="Cybersecurity operations centre monitoring"
+                         loading="lazy" width="1920" height="1080">
+                    <div class="showcase-overlay"></div>
+                </div>
+                <div class="showcase-content">
+                    <div class="showcase-inner">
+                        <span class="showcase-tag">Cybersecurity</span>
+                        <h3>Enterprise Security Operations Centre</h3>
+                        <p>Implemented a 24/7 threat detection and response platform for a financial services provider — achieving full POPIA compliance and zero security breaches in 18 months.</p>
+                        <div class="showcase-stats">
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="24" data-suffix="/7">0/7</span>
+                                <span class="stat-label">Monitoring</span>
                             </div>
-                            <div class="hero-slide">
-                                <span class="dot"></span>
-                                CIDB registered · SARS tax compliant
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="0">0</span>
+                                <span class="stat-label">Security breaches</span>
                             </div>
-                            <div class="hero-slide">
-                                <span class="dot"></span>
-                                Serving 9 market segments nationwide
-                            </div>
-                        </div>
-                        <div class="hero-slider-controls">
-                            <div class="hero-slider-nav" role="tablist">
-                                <button class="active" aria-label="Slide 1" role="tab"></button>
-                                <button aria-label="Slide 2" role="tab"></button>
-                                <button aria-label="Slide 3" role="tab"></button>
-                            </div>
-                            <div class="hero-slider-arrows">
-                                <button type="button" data-hero-prev aria-label="Previous slide">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="15 18 9 12 15 6"/>
-                                    </svg>
-                                </button>
-                                <button type="button" data-hero-next aria-label="Next slide">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="9 18 15 12 9 6"/>
-                                    </svg>
-                                </button>
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="100" data-suffix="%">0%</span>
+                                <span class="stat-label">POPIA compliance</span>
                             </div>
                         </div>
+                        <a href="services/cybersecurity.html" class="btn btn-copper btn-arrow">
+                            Explore this service
+                        </a>
                     </div>
                 </div>
-            </div>
+            </article>
+
+            <!-- Slide 3 -->
+            <article class="showcase-slide" role="group" aria-label="Slide 3 of 4">
+                <div class="showcase-image">
+                    <img src="images/cloud_solutions.jpg"
+                         alt="Cloud infrastructure architecture"
+                         loading="lazy" width="1920" height="1080">
+                    <div class="showcase-overlay"></div>
+                </div>
+                <div class="showcase-content">
+                    <div class="showcase-inner">
+                        <span class="showcase-tag">Cloud Solutions</span>
+                        <h3>Hybrid Cloud Migration</h3>
+                        <p>Migrated a government department's legacy systems to a secure hybrid cloud environment — reducing infrastructure costs by 42% while improving service delivery to citizens.</p>
+                        <div class="showcase-stats">
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="42" data-suffix="%">0%</span>
+                                <span class="stat-label">Cost reduction</span>
+                            </div>
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="3" data-suffix="x">0x</span>
+                                <span class="stat-label">Faster deployment</span>
+                            </div>
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="500" data-suffix="+">0+</span>
+                                <span class="stat-label">Systems migrated</span>
+                            </div>
+                        </div>
+                        <a href="services/cloud-solutions.html" class="btn btn-copper btn-arrow">
+                            Explore this service
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Slide 4 -->
+            <article class="showcase-slide" role="group" aria-label="Slide 4 of 4">
+                <div class="showcase-image">
+                    <img src="images/ict_training.jpg"
+                         alt="ICT training session in progress"
+                         loading="lazy" width="1920" height="1080">
+                    <div class="showcase-overlay"></div>
+                </div>
+                <div class="showcase-content">
+                    <div class="showcase-inner">
+                        <span class="showcase-tag">ICT Training</span>
+                        <h3>Digital Skills Empowerment Programme</h3>
+                        <p>Delivered comprehensive digital literacy training to 200+ municipal employees across the North West province — building internal capability for sustainable digital transformation.</p>
+                        <div class="showcase-stats">
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="200" data-suffix="+">0+</span>
+                                <span class="stat-label">People trained</span>
+                            </div>
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="95" data-suffix="%">0%</span>
+                                <span class="stat-label">Completion rate</span>
+                            </div>
+                            <div class="showcase-stat">
+                                <span class="stat-value" data-count="8" data-suffix="+">0+</span>
+                                <span class="stat-label">Municipalities served</span>
+                            </div>
+                        </div>
+                        <a href="services/ict-training.html" class="btn btn-copper btn-arrow">
+                            Explore this service
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Navigation controls -->
+        <div class="showcase-nav">
+            <button type="button" class="showcase-nav-btn showcase-prev" aria-label="Previous slide">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button type="button" class="showcase-nav-btn showcase-next" aria-label="Next slide">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+
+        <!-- Slide indicators -->
+        <div class="showcase-dots" role="tablist" aria-label="Slide navigation">
+            <button class="active" role="tab" aria-selected="true" aria-label="Go to slide 1">
+                <span class="dot-progress"></span>
+            </button>
+            <button role="tab" aria-selected="false" aria-label="Go to slide 2">
+                <span class="dot-progress"></span>
+            </button>
+            <button role="tab" aria-selected="false" aria-label="Go to slide 3">
+                <span class="dot-progress"></span>
+            </button>
+            <button role="tab" aria-selected="false" aria-label="Go to slide 4">
+                <span class="dot-progress"></span>
+            </button>
+        </div>
+
+        <!-- Slide counter -->
+        <div class="showcase-counter" aria-hidden="true">
+            <span class="current">01</span>
+            <span class="separator">/</span>
+            <span class="total">04</span>
         </div>
     </div>
 </section>
 
 <!-- ============================================
-     ABOUT
+     ABOUT 
      ============================================ -->
 <section class="about-hero" id="about">
     <div class="container">
-        <div class="about-split">
+	        <div class="section-head-row" data-reveal>
+            <div class="section-head">
+                <span class="eyebrow">Who We Are</span>
+                <h2>Not your average IT company.</h2>
+                <p class="lead">We're a small team with a big obsession — building technology that South African organisations actually want to use.</p>
+            </div>
+            <a href="about.html" class="btn btn-outline btn-arrow">Read the full story</a>
+        </div>
+
+
+        <!-- Two-Column Editorial Grid -->
+        <div class="about-editorial">
+
+            <!-- LEFT COLUMN: Image + hover cards -->
             <div class="about-visual" data-reveal="left">
-                <img src="images/about_us.jpg"
-                     alt="The Luminous X Technologies team at our Mmabatho office"
-                     loading="lazy" width="800" height="1000">
-                <div class="about-badge">
-                    <div>
-                        <div class="num">100%</div>
-                        <div class="lbl">Black-Owned</div>
+                <div class="about-image">
+                    <img src="images/about_us.jpg"
+                         alt="The Luminous X Technologies team at our Mmabatho office"
+                         loading="lazy" width="800" height="1000">
+                </div>
+
+                <!-- Hovering stat cards over the image -->
+                <div class="hover-cards">
+                    <div class="hover-card hover-card--top">
+                        <span class="hc-num" data-count="12" data-suffix="+">0+</span>
+                        <span class="hc-lbl">Service Disciplines</span>
                     </div>
-                    <div>
-                        <div class="num">2019</div>
-                        <div class="lbl">Established</div>
+                    <div class="hover-card hover-card--bottom">
+                        <span class="hc-num" data-count="9" data-suffix="+">0+</span>
+                        <span class="hc-lbl">Industries Served</span>
                     </div>
                 </div>
+
+                <!-- Floating year badge bottom-left -->
+                <div class="about-year-badge">
+                    <span class="year-num">2019</span>
+                    <span class="year-lbl">Founded</span>
+                </div>
             </div>
-            <div class="about-content" data-reveal="right">
-                <span class="eyebrow">About Us</span>
-                <h2>A South African technology partner built for the long term.</h2>
-                <p>Luminous X Technologies (Pty) Ltd was incorporated in 2019 as a 100% black-owned, youth-led enterprise. We deliver world-class technology solutions to businesses and government institutions across South Africa.</p>
-                <p>As a Level 1 B-BBEE contributor with 135% procurement recognition, we deliver maximum empowerment value while providing premium technology services.</p>
-                <ul class="about-checklist">
-                    <li>100% Black-Owned</li>
-                    <li>Level 1 B-BBEE</li>
-                    <li>Youth-Led Enterprise</li>
-                    <li>135% Procurement</li>
-                    <li>CIDB Registered</li>
-                    <li>SARS Tax Compliant</li>
-                </ul>
-                <a href="about.html" class="btn btn-primary btn-arrow">Learn more about us</a>
+
+            <!-- RIGHT COLUMN: 2x2 card grid -->
+            <div class="about-cards" data-reveal="right">
+
+                <!-- Card 01 -->
+                <article class="about-card">
+                    <div class="card-head">
+                        <span class="card-num">01</span>
+                        <span class="card-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2v6"/>
+                                <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+                                <path d="M12 16v6"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <h3>Started in Mmabatho</h3>
+                    <p>Two laptops, one whiteboard, and a stubborn belief that world-class technology shouldn't require a Johannesburg address.</p>
+                </article>
+
+                <!-- Card 02 -->
+                <article class="about-card">
+                    <div class="card-head">
+                        <span class="card-num">02</span>
+                        <span class="card-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <h3>Craft over catalogue</h3>
+                    <p>Every engagement starts with a blank page and a whiteboard — not a product menu. We design for you, not resell to you.</p>
+                </article>
+
+                <!-- Card 03 -->
+                <article class="about-card">
+                    <div class="card-head">
+                        <span class="card-num">03</span>
+                        <span class="card-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <h3>Small, senior, hands-on</h3>
+                    <p>The people who scope your project are the people who build it. No layers, no handoffs, no surprises.</p>
+                </article>
+
+                <!-- Card 04: Quote (dark variant, sits in the grid) -->
+                <article class="about-card about-card--quote">
+                    <svg class="quote-mark" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M9.5 5A5.5 5.5 0 0 0 4 10.5v9h8v-9H6.5A3 3 0 0 1 9.5 8V5zm11 0A5.5 5.5 0 0 0 15 10.5v9h8v-9h-5.5A3 3 0 0 1 20.5 8V5z"/>
+                    </svg>
+                    <blockquote>We're not here to sell you what we have. We're here to build what you need.</blockquote>
+                    <div class="quote-author">
+                        <span class="quote-avatar" aria-hidden="true">JM</span>
+                        <div class="quote-info">
+                            <strong>Julian Motswenyane</strong>
+                            <span>Founder &amp; Director</span>
+                        </div>
+                    </div>
+                </article>
+
             </div>
+
         </div>
+
     </div>
 </section>
 

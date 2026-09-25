@@ -30,12 +30,11 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F0B08'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='%23C27A3F' font-family='Georgia' font-weight='bold'%3EX%3C/text%3E%3C/svg%3E">
 
-    <!-- Fonts — Professional IT (Inter only) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -68,10 +67,11 @@
     <symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a3 3 0 0 1-3-3V7a3 3 0 0 1 6 0v7a3 3 0 0 1-3 3z"/><path d="M7 11H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3"/><path d="M17 11h3a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-3"/><path d="M12 17v4"/><path d="M8 21h8"/></symbol>
     <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
     <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
 </svg>
 
 <!-- ============================================
-     HEADER
+     HEADER — CONSISTENT WITH INDEX
      ============================================ -->
 <header class="site-header" role="banner">
     <div class="header-inner">
@@ -91,18 +91,114 @@
                 <li class="nav-dropdown">
                     <a href="services.html">Services</a>
                     <ul class="dropdown-menu">
-                        <li><a href="services/custom-software-development.html">Custom Software Development</a></li>
-                        <li><a href="services/hardware-it-infrastructure.html">Hardware &amp; IT Infrastructure</a></li>
-                        <li><a href="services/digital-transformation.html">Digital Transformation</a></li>
-                        <li><a href="services/it-consulting-advisory.html">IT Consulting &amp; Advisory</a></li>
-                        <li><a href="services/cloud-solutions.html">Cloud Solutions</a></li>
-                        <li><a href="services/cybersecurity.html">Cybersecurity</a></li>
-                        <li><a href="services/networking-solutions.html">Networking Solutions</a></li>
-                        <li><a href="services/voip-communications.html">VoIP &amp; Communications</a></li>
-                        <li><a href="services/managed-it-services.html">Managed IT Services</a></li>
-                        <li><a href="services/data-analytics-bi.html">Data Analytics &amp; BI</a></li>
-                        <li><a href="services/erp-business-systems.html">ERP &amp; Business Systems</a></li>
-                        <li><a href="services/ict-training.html">ICT Training</a></li>
+                        <li>
+                            <a href="services/custom-software-development.html">
+                                <span class="dd-icon"><svg><use href="#i-software"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Custom Software Development</strong>
+                                    <span>Bespoke enterprise applications</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/hardware-it-infrastructure.html">
+                                <span class="dd-icon"><svg><use href="#i-hardware"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Hardware &amp; IT Infrastructure</strong>
+                                    <span>Servers, workstations, networks</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/digital-transformation.html">
+                                <span class="dd-icon"><svg><use href="#i-transform"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Digital Transformation</strong>
+                                    <span>Modernise legacy systems</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/it-consulting-advisory.html">
+                                <span class="dd-icon"><svg><use href="#i-consult"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>IT Consulting &amp; Advisory</strong>
+                                    <span>Independent strategy and audits</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/cloud-solutions.html">
+                                <span class="dd-icon"><svg><use href="#i-cloud"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Cloud Solutions</strong>
+                                    <span>AWS, Azure, Google Cloud</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/cybersecurity.html">
+                                <span class="dd-icon"><svg><use href="#i-shield"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Cybersecurity</strong>
+                                    <span>POPIA, threat detection, EDR</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/networking-solutions.html">
+                                <span class="dd-icon"><svg><use href="#i-network"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Networking Solutions</strong>
+                                    <span>LAN/WAN, Wi-Fi, structured cabling</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/voip-communications.html">
+                                <span class="dd-icon"><svg><use href="#i-phone"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>VoIP &amp; Communications</strong>
+                                    <span>Cloud PBX, SIP trunking</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/managed-it-services.html">
+                                <span class="dd-icon"><svg><use href="#i-managed"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Managed IT Services</strong>
+                                    <span>24/7 monitoring and support</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/data-analytics-bi.html">
+                                <span class="dd-icon"><svg><use href="#i-analytics"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>Data Analytics &amp; BI</strong>
+                                    <span>Dashboards and predictive models</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/erp-business-systems.html">
+                                <span class="dd-icon"><svg><use href="#i-erp"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>ERP &amp; Business Systems</strong>
+                                    <span>ERP, CRM, HR platforms</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services/ict-training.html">
+                                <span class="dd-icon"><svg><use href="#i-training"/></svg></span>
+                                <span class="dd-label">
+                                    <strong>ICT Training</strong>
+                                    <span>Digital skills and empowerment</span>
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="contact.html">Contact</a></li>
@@ -113,106 +209,238 @@
 </header>
 
 <!-- ============================================
-     PAGE HERO — unified image background
+     PAGE HERO — Modern About Us Hero
+     Uses existing .page-hero--image system
      ============================================ -->
-<section class="page-hero page-hero--image">
+<section class="page-hero page-hero--image about-hero-custom">
     <div class="container">
-        <div style="text-align: center; max-width: 780px; margin-inline: auto;" data-reveal>
-            <nav class="breadcrumb" aria-label="Breadcrumb" style="justify-content: center;">
-                <a href="index.html">Home</a>
-                <span class="sep">/</span>
-                <span>About</span>
-            </nav>
-            <span class="eyebrow" style="justify-content: center;">Who We Are</span>
-            <h1>Driven by innovation. Built on integrity.</h1>
-            <p class="lead" style="margin-top: var(--s-4);">Luminous X Technologies is a South African technology partner committed to transforming how businesses operate through intelligent application of technology.</p>
+        <div class="hero-split" data-reveal>
+            <div class="hero-split-content">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="sep">/</span>
+                    <span>About</span>
+                </nav>
+                <span class="eyebrow">Who We Are</span>
+                <h1>Driven by innovation.<br><span style="color: var(--copper-300);">Built on integrity.</span></h1>
+                <p class="lead">A South African technology partner committed to transforming how businesses operate through the intelligent application of technology.</p>
+
+                <div class="hero-quick-stats">
+                    <div class="hqs-item">
+                        <span class="hqs-num">2019</span>
+                        <span class="hqs-lbl">Founded</span>
+                    </div>
+                    <div class="hqs-item">
+                        <span class="hqs-num">100<span class="hqs-accent">%</span></span>
+                        <span class="hqs-lbl">Black-Owned</span>
+                    </div>
+                    <div class="hqs-item">
+                        <span class="hqs-num">L<span class="hqs-accent">v</span>1</span>
+                        <span class="hqs-lbl">B-BBEE</span>
+                    </div>
+                    <div class="hqs-item">
+                        <span class="hqs-num">135<span class="hqs-accent">%</span></span>
+                        <span class="hqs-lbl">Procurement</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-split-visual">
+                <div class="hero-visual-card">
+                    <div class="hvc-head">
+                        <span class="hvc-label">Company Snapshot</span>
+                        <span class="status">Verified</span>
+                    </div>
+                    <div class="hvc-row">
+                        <span>Legal Name</span>
+                        <strong>Luminous X Technologies (Pty) Ltd</strong>
+                    </div>
+                    <div class="hvc-row">
+                        <span>Registration</span>
+                        <strong>2019/197828/07</strong>
+                    </div>
+                    <div class="hvc-row">
+                        <span>Head Office</span>
+                        <strong>Mmabatho, North West</strong>
+                    </div>
+                    <div class="hvc-row">
+                        <span>B-BBEE Status</span>
+                        <strong style="color: var(--copper-300);">Level 1 · 135%</strong>
+                    </div>
+                    <div class="hvc-row">
+                        <span>Ownership</span>
+                        <strong>100% Black-Owned</strong>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- ============================================
-     INTRODUCTION
+     OUR STORY — Editorial Split Layout
+     Uses existing .about-editorial structure
      ============================================ -->
-<section class="section bg-white">
+<section class="section bg-white" id="story">
     <div class="container">
-        <div class="about-split">
-            <div class="about-visual" data-reveal="left" style="aspect-ratio: 4/4.5;">
-                <img src="images/about_us.jpg"
-                     alt="The Luminous X Technologies team at our Mmabatho office"
-                     loading="lazy"
-                     width="800"
-                     height="900">
-                <div class="about-badge">
-                    <div>
-                        <div class="num">2019</div>
-                        <div class="lbl">Established</div>
-                    </div>
-                    <div>
-                        <div class="num">100%</div>
-                        <div class="lbl">Black-Owned</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-content" data-reveal="right">
+        <div class="section-head-row" data-reveal>
+            <div class="section-head">
                 <span class="eyebrow">Our Story</span>
-                <h2>Founded to bridge the gap between business strategy and technology.</h2>
-                <p>Luminous X Technologies (Pty) Ltd is a South African technology solutions company incorporated on 03 May 2019 and registered with the Companies and Intellectual Property Commission (CIPC) under registration number 2019/197828/07.</p>
-                <p>Headquartered in the North West province, we are a 100% black-owned, youth-led enterprise committed to delivering world-class technology solutions to businesses and government institutions across South Africa.</p>
-                <p>We are powered by a team of passionate, highly skilled technology professionals who are driven by a singular purpose: to help organisations harness the transformative power of digital technology.</p>
+                <h2>Not your average IT company.</h2>
+                <p class="lead">We're a small team with a big obsession — building technology that South African organisations actually want to use.</p>
+            </div>
+            <a href="contact.html" class="btn btn-outline btn-arrow">Work with us</a>
+        </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); margin-top: var(--s-8); padding-top: var(--s-8); border-top: 1px solid var(--ink-100);">
-                    <div>
-                        <div style="font-family: var(--font-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-400); margin-bottom: 4px;">Registration</div>
-                        <div style="font-family: var(--font-display); font-size: var(--fs-md); font-weight: 700; color: var(--ink-900);">2019/197828/07</div>
+        <!-- Two-Column Editorial Grid -->
+        <div class="about-editorial">
+            <!-- LEFT: Image with floating cards -->
+            <div class="about-visual" data-reveal="left">
+                <div class="about-image">
+                    <img src="images/about_us.jpg"
+                         alt="The Luminous X Technologies team at our Mmabatho office"
+                         loading="lazy" width="800" height="1000">
+                </div>
+
+                <div class="hover-cards">
+                    <div class="hover-card hover-card--top">
+                        <span class="hc-num" data-count="12" data-suffix="+">0+</span>
+                        <span class="hc-lbl">Service Disciplines</span>
                     </div>
-                    <div>
-                        <div style="font-family: var(--font-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-400); margin-bottom: 4px;">Head Office</div>
-                        <div style="font-family: var(--font-display); font-size: var(--fs-md); font-weight: 700; color: var(--ink-900);">North West, ZA</div>
+                    <div class="hover-card hover-card--bottom">
+                        <span class="hc-num" data-count="9" data-suffix="+">0+</span>
+                        <span class="hc-lbl">Industries Served</span>
                     </div>
                 </div>
+
+                <div class="about-year-badge">
+                    <span class="year-num">2019</span>
+                    <span class="year-lbl">Founded</span>
+                </div>
+            </div>
+
+            <!-- RIGHT: 2x2 card grid -->
+            <div class="about-cards" data-reveal="right">
+                <article class="about-card">
+                    <div class="card-head">
+                        <span class="card-num">01</span>
+                        <span class="card-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2v6"/>
+                                <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+                                <path d="M12 16v6"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <h3>Started in Mmabatho</h3>
+                    <p>Two laptops, one whiteboard, and a stubborn belief that world-class technology shouldn't require a Johannesburg address.</p>
+                </article>
+
+                <article class="about-card">
+                    <div class="card-head">
+                        <span class="card-num">02</span>
+                        <span class="card-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <h3>Craft over catalogue</h3>
+                    <p>Every engagement starts with a blank page and a whiteboard — not a product menu. We design for you, not resell to you.</p>
+                </article>
+
+                <article class="about-card">
+                    <div class="card-head">
+                        <span class="card-num">03</span>
+                        <span class="card-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <h3>Small, senior, hands-on</h3>
+                    <p>The people who scope your project are the people who build it. No layers, no handoffs, no surprises.</p>
+                </article>
+
+                <article class="about-card about-card--quote">
+                    <svg class="quote-mark" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M9.5 5A5.5 5.5 0 0 0 4 10.5v9h8v-9H6.5A3 3 0 0 1 9.5 8V5zm11 0A5.5 5.5 0 0 0 15 10.5v9h8v-9h-5.5A3 3 0 0 1 20.5 8V5z"/>
+                    </svg>
+                    <blockquote>We're not here to sell you what we have. We're here to build what you need.</blockquote>
+                    <div class="quote-author">
+                        <span class="quote-avatar" aria-hidden="true">JM</span>
+                        <div class="quote-info">
+                            <strong>Julian Motswenyane</strong>
+                            <span>Founder &amp; Director</span>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ============================================
-     MISSION & VISION
+     MISSION, VISION & VALUES — Compact 3-col
      ============================================ -->
 <section class="section bg-cream">
     <div class="container">
         <div class="section-head center" data-reveal>
             <span class="eyebrow">Purpose</span>
-            <h2>Mission &amp; Vision</h2>
-            <p class="lead">The two pillars that guide every decision we make and every project we deliver.</p>
+            <h2>Mission, Vision &amp; Values</h2>
+            <p class="lead">The three pillars that guide every decision we make and every project we deliver.</p>
         </div>
 
-        <div class="grid grid-2" style="gap: var(--s-8);">
-            <article data-reveal style="background: var(--white); border-radius: var(--r-xl); padding: var(--s-10); border: 1px solid var(--ink-100); position: relative; overflow: hidden; box-shadow: var(--sh-sm);">
-                <div style="position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(194,122,63,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
-                <div class="svc-icon" style="width: 56px; height: 56px; position: relative; z-index: 1;">
-                    <svg width="24" height="24"><use href="#i-target"/></svg>
+        <div class="mvv-grid">
+            <!-- Mission -->
+            <article class="mvv-card" data-reveal>
+                <div class="mvv-icon">
+                    <svg width="22" height="22"><use href="#i-target"/></svg>
                 </div>
-                <h3 style="font-size: var(--fs-xl); margin: var(--s-5) 0 var(--s-4); position: relative; z-index: 1;">Our Mission</h3>
-                <p style="font-size: var(--fs-base); line-height: 1.7; position: relative; z-index: 1; margin: 0;">To empower businesses and government institutions by delivering reliable, innovative, and scalable technology solutions that simplify complexity, improve operational efficiency, and drive sustainable growth in the digital age.</p>
+                <span class="mvv-label">Mission</span>
+                <h3>Empower through technology.</h3>
+                <p>Deliver reliable, innovative, and scalable solutions that simplify complexity and drive sustainable growth for South African organisations.</p>
+                <a href="services.html" class="mvv-link">See how we do it</a>
             </article>
 
-            <article data-reveal data-reveal-delay="2" style="background: var(--ink-900); border-radius: var(--r-xl); padding: var(--s-10); position: relative; overflow: hidden; color: var(--white);">
-                <div style="position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(194,122,63,0.3) 0%, transparent 70%); border-radius: 50%;"></div>
-                <div class="svc-icon" style="width: 56px; height: 56px; background: rgba(194,122,63,0.15); border-color: rgba(194,122,63,0.3); color: var(--copper-300); position: relative; z-index: 1;">
-                    <svg width="24" height="24"><use href="#i-trophy"/></svg>
+            <!-- Vision -->
+            <article class="mvv-card mvv-card--dark" data-reveal data-reveal-delay="1">
+                <div class="mvv-icon">
+                    <svg width="22" height="22"><use href="#i-trophy"/></svg>
                 </div>
-                <h3 style="font-size: var(--fs-xl); margin: var(--s-5) 0 var(--s-4); color: var(--white); position: relative; z-index: 1;">Our Vision</h3>
-                <p style="font-size: var(--fs-base); line-height: 1.7; color: rgba(255,255,255,0.7); position: relative; z-index: 1; margin: 0;">To be the most trusted technology partner for organisations across Southern Africa — recognised for our innovation, expertise, and unwavering commitment to client success in an increasingly connected and digital world.</p>
+                <span class="mvv-label">Vision</span>
+                <h3>Africa's most trusted partner.</h3>
+                <p>To be the technology partner organisations across Southern Africa rely on — known for innovation, expertise, and client success.</p>
+                <a href="contact.html" class="mvv-link">Start a conversation</a>
+            </article>
+
+            <!-- Values -->
+            <article class="mvv-card" data-reveal data-reveal-delay="2">
+                <div class="mvv-icon">
+                    <svg width="22" height="22"><use href="#i-shield-check"/></svg>
+                </div>
+                <span class="mvv-label">Values</span>
+                <h3>Principles we live by.</h3>
+                <ul class="mvv-list">
+                    <li><strong>Reliability</strong></li>
+                    <li><strong>Innovation</strong></li>
+                    <li><strong>Integrity</strong></li>
+                    <li><strong>Excellence</strong></li>
+                    <li><strong>Empowerment</strong></li>
+                </ul>
+                <a href="#values" class="mvv-link">Explore all values</a>
             </article>
         </div>
     </div>
 </section>
 
 <!-- ============================================
-     VALUES — Card grid
+     VALUES — Full Card grid
      ============================================ -->
-<section class="section bg-white">
+<section class="section bg-white" id="values">
     <div class="container">
         <div class="section-head center" data-reveal>
             <span class="eyebrow">Our Values</span>
@@ -307,20 +535,42 @@
 </section>
 
 <!-- ============================================
-     CINEMATIC IMAGE BAND
+     CINEMATIC IMAGE BAND — Enhanced
      ============================================ -->
-<section class="section bg-white" style="padding-top: 0;">
+<section class="section bg-white">
     <div class="container">
-        <div class="img-hero" data-reveal>
+        <div class="img-hero img-hero--cinematic" data-reveal>
             <img src="images/contact_us_hero.jpg"
                  alt="Luminous X Technologies leadership presenting to enterprise stakeholders"
                  loading="lazy" width="1920" height="822">
+            <div class="img-hero-overlay"></div>
+
+            <!-- Top-left tag -->
+            <div class="img-hero-tag">
+                <span class="tag-dot"></span>
+                <span>Since 2019</span>
+            </div>
+
+            <!-- Floating mini stats — top right -->
+            <div class="img-hero-stats">
+                <div class="ihs-item">
+                    <span class="ihs-num">12<span class="ihs-accent">+</span></span>
+                    <span class="ihs-lbl">Services</span>
+                </div>
+                <div class="ihs-divider"></div>
+                <div class="ihs-item">
+                    <span class="ihs-num">9<span class="ihs-accent">+</span></span>
+                    <span class="ihs-lbl">Industries</span>
+                </div>
+            </div>
+
+            <!-- Bottom badge -->
             <div class="img-badge">
                 <div>
                     <div class="img-badge-title">Experience you can trust.</div>
                     <div class="img-badge-sub">Delivering for enterprise &amp; government since 2019</div>
                 </div>
-                <a href="contact.html" class="btn btn-primary btn-sm btn-arrow">Talk to us</a>
+                <a href="contact.html" class="btn btn-copper btn-sm btn-arrow">Talk to us</a>
             </div>
         </div>
     </div>
@@ -364,7 +614,7 @@
 </section>
 
 <!-- ============================================
-     CTA FINAL — with unified image background
+     CTA FINAL
      ============================================ -->
 <section class="cta-final cta-final--image">
     <div class="container">
