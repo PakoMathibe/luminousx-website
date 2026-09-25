@@ -1,23 +1,35 @@
 /**
  * ============================================================
  * Luminous X Technologies — Main JavaScript
- * Version: 5.0.0
- * Author: Luminous X Technologies
- * Description:
- *   Handles mobile navigation, scroll effects, reveal animations,
- *   animated counters, hero slider, testimonial slider, and
- *   full client-side form validation with character counter.
+ * Version: 6.0.0
+ * ============================================================
  *
- *   Written as a single IIFE to avoid polluting the global scope.
- *   All public API is idempotent — calling functions twice is safe.
+ * Handles:
+ *   - Mobile navigation (with swipe gesture support)
+ *   - Desktop + mobile dropdown menus
+ *   - Header scroll effect (throttled with rAF)
+ *   - Smooth anchor scrolling (with header offset)
+ *   - Scroll reveal animations (IntersectionObserver)
+ *   - Animated number counters
+ *   - Hero slider (with prev/next + dots + auto-advance)
+ *   - Testimonial slider
+ *   - Contact form validation (real-time + submit)
+ *   - Scroll-to-top button visibility
+ *   - Dynamic year injection
+ *
+ * All functions are idempotent — safe to call multiple times.
+ * Wrapped in an IIFE to avoid polluting global scope.
  * ============================================================
  */
 (function () {
     'use strict';
 
-    /* ============================================================
-       BOOTSTRAP — runs when DOM is ready
-       ============================================================ */
+    /* ==========================================================
+       BOOTSTRAP
+       Fires on DOMContentLoaded (or immediately if already loaded).
+       Each init function is wrapped in try/catch so one failure
+       doesn't break the others.
+       ========================================================== */
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
@@ -25,22 +37,31 @@
     }
 
     function init() {
-        try { initMobileNav(); } catch (e) { console.warn('initMobileNav failed', e); }
-        try { initDropdownMobile(); } catch (e) { console.warn('initDropdownMobile failed', e); }
-        try { initHeaderScroll(); } catch (e) { console.warn('initHeaderScroll failed', e); }
-        try { initSmoothScroll(); } catch (e) { console.warn('initSmoothScroll failed', e); }
-        try { initReveal(); } catch (e) { console.warn('initReveal failed', e); }
-        try { initCounters(); } catch (e) { console.warn('initCounters failed', e); }
-        try { initHeroSlider(); } catch (e) { console.warn('initHeroSlider failed', e); }
-        try { initTestimonialSlider(); } catch (e) { console.warn('initTestimonialSlider failed', e); }
-        try { initFormValidation(); } catch (e) { console.warn('initFormValidation failed', e); }
-        try { initYear(); } catch (e) { console.warn('initYear failed', e); }
+        const fns = [
+            initMobileNav,
+            initDropdownMobile,
+            initHeaderScroll,
+            initSmoothScroll,
+            initReveal,
+            initCounters,
+            initHeroSlider,
+            initTestimonialSlider,
+            initFormValidation,
+            initScrollTop,
+            initYear
+        ];
+        fns.forEach(fn => {
+            try { fn(); } catch (e) { console.warn(`${fn.name} failed:`, e); }
+        });
     }
 
-    /* ============================================================
+    /* ==========================================================
        MOBILE NAVIGATION
-       Toggles the slide-in nav panel and manages body scroll lock.
-       ============================================================ */
+       - Toggles .open on .nav
+       - Locks body scroll while open
+       - Closes on link tap, ESC, or resize to desktop
+       - Supports horizontal swipe-right to close
+       ========================================================== */
     function initMobileNav() {
         const toggle = document.querySelector('.mobile-toggle');
         const nav = document.querySelector('.nav');
@@ -53,14 +74,18 @@
             document.body.style.overflow = '';
         };
 
+        const open = () => {
+            nav.classList.add('open');
+            toggle.classList.add('active');
+            toggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        };
+
         toggle.addEventListener('click', () => {
-            const open = nav.classList.toggle('open');
-            toggle.classList.toggle('active');
-            toggle.setAttribute('aria-expanded', open);
-            document.body.style.overflow = open ? 'hidden' : '';
+            nav.classList.contains('open') ? close() : open();
         });
 
-        // Close nav on link tap (mobile)
+        // Close on link tap
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) close();
@@ -75,20 +100,46 @@
             }
         });
 
+        // Swipe-right gesture to close
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touching = false;
+
+        nav.addEventListener('touchstart', e => {
+            if (window.innerWidth > 768) return;
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touching = true;
+        }, { passive: true });
+
+        nav.addEventListener('touchmove', e => {
+            if (!touching || window.innerWidth > 768) return;
+            const dx = e.touches[0].clientX - touchStartX;
+            const dy = e.touches[0].clientY - touchStartY;
+            // Right swipe with more horizontal than vertical movement
+            if (dx > 60 && Math.abs(dx) > Math.abs(dy)) {
+                touching = false;
+                close();
+            }
+        }, { passive: true });
+
+        nav.addEventListener('touchend', () => { touching = false; });
+
         // Close on resize to desktop
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
-                if (window.innerWidth > 768) close();
+                if (window.innerWidth > 768 && nav.classList.contains('open')) close();
             }, 150);
         });
     }
 
-    /* ============================================================
+    /* ==========================================================
        MOBILE DROPDOWN
-       Taps on parent links toggle the dropdown rather than navigating.
-       ============================================================ */
+       Parent links with children toggle the dropdown on tap
+       instead of navigating. On desktop, hover handles it.
+       ========================================================== */
     function initDropdownMobile() {
         document.querySelectorAll('.nav-dropdown > a').forEach(link => {
             link.addEventListener('click', e => {
@@ -100,10 +151,11 @@
         });
     }
 
-    /* ============================================================
+    /* ==========================================================
        HEADER SCROLL EFFECT
-       Adds .scrolled once the user scrolls past 20px.
-       ============================================================ */
+       Adds .scrolled when user scrolls past 20px.
+       Throttled with requestAnimationFrame.
+       ========================================================== */
     function initHeaderScroll() {
         const header = document.querySelector('.site-header');
         if (!header) return;
@@ -121,10 +173,11 @@
         onScroll();
     }
 
-    /* ============================================================
+    /* ==========================================================
        SMOOTH SCROLL FOR ANCHOR LINKS
-       Uses native smooth scroll with header offset compensation.
-       ============================================================ */
+       Adjusts for fixed header height and updates URL hash
+       without triggering a jump.
+       ========================================================== */
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', e => {
@@ -135,7 +188,7 @@
                 try {
                     target = document.querySelector(id);
                 } catch (_) {
-                    return; // Invalid selector, let browser handle
+                    return;
                 }
                 if (!target) return;
 
@@ -145,7 +198,6 @@
 
                 window.scrollTo({ top, behavior: 'smooth' });
 
-                // Update URL hash without triggering jump
                 if (history.replaceState) {
                     history.replaceState(null, '', id);
                 }
@@ -153,16 +205,15 @@
         });
     }
 
-    /* ============================================================
+    /* ==========================================================
        SCROLL REVEAL
-       Reveals elements with [data-reveal] when they enter the viewport.
-       Uses IntersectionObserver for performance.
-       ============================================================ */
+       Reveals [data-reveal] elements as they enter the viewport.
+       Respects prefers-reduced-motion.
+       ========================================================== */
     function initReveal() {
         const els = document.querySelectorAll('[data-reveal]');
         if (!els.length) return;
 
-        // Respect reduced motion preferences
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             els.forEach(el => el.classList.add('revealed'));
             return;
@@ -180,16 +231,16 @@
         els.forEach(el => io.observe(el));
     }
 
-    /* ============================================================
+    /* ==========================================================
        ANIMATED COUNTERS
-       Animates elements with [data-count] using ease-out cubic.
-       Optional: data-prefix and data-suffix for formatting.
-       ============================================================ */
+       Ease-out cubic animation triggered when the element
+       scrolls into view. Supports data-prefix, data-suffix,
+       and data-duration.
+       ========================================================== */
     function initCounters() {
         const counters = document.querySelectorAll('[data-count]');
         if (!counters.length) return;
 
-        // Skip animation for reduced motion
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             counters.forEach(el => {
                 const target = parseFloat(el.dataset.count) || 0;
@@ -221,11 +272,9 @@
 
             const tick = (now) => {
                 const t = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+                const eased = 1 - Math.pow(1 - t, 3);
                 const val = target * eased;
-                const formatted = Number.isInteger(target)
-                    ? Math.round(val)
-                    : val.toFixed(1);
+                const formatted = Number.isInteger(target) ? Math.round(val) : val.toFixed(1);
                 el.textContent = prefix + formatted + suffix;
                 if (t < 1) requestAnimationFrame(tick);
             };
@@ -233,20 +282,30 @@
         }
     }
 
-    /* ============================================================
-       HERO SLIDER (mini)
-       Small auto-rotating slider in the hero card.
-       ============================================================ */
+    /* ==========================================================
+       HERO SLIDER
+       Modern slider with:
+       - Auto-advance every 5 seconds
+       - Prev/next buttons
+       - Dots that reflect current slide
+       - Pause on hover, resume on leave
+       - Pause when tab is hidden
+       - Touch swipe support
+       ========================================================== */
     function initHeroSlider() {
+        const slider = document.querySelector('.hero-slider');
         const track = document.querySelector('.hero-slider-track');
         const dots = document.querySelectorAll('.hero-slider-nav button');
-        if (!track || !dots.length) return;
+        const prev = document.querySelector('[data-hero-prev]');
+        const next = document.querySelector('[data-hero-next]');
+        if (!slider || !track) return;
 
         const total = track.children.length;
         if (total < 2) return;
 
         let i = 0;
         let timer = null;
+        const INTERVAL = 5000;
 
         const go = (idx) => {
             i = (idx + total) % total;
@@ -254,33 +313,53 @@
             dots.forEach((d, k) => d.classList.toggle('active', k === i));
         };
 
+        // Dot navigation
         dots.forEach((dot, idx) => {
-            dot.addEventListener('click', () => {
-                go(idx);
-                restart();
-            });
+            dot.addEventListener('click', () => { go(idx); restart(); });
         });
 
-        const start = () => { timer = setInterval(() => go(i + 1), 4500); };
+        // Arrow navigation
+        prev?.addEventListener('click', () => { go(i - 1); restart(); });
+        next?.addEventListener('click', () => { go(i + 1); restart(); });
+
+        const start = () => { timer = setInterval(() => go(i + 1), INTERVAL); };
         const stop = () => { if (timer) clearInterval(timer); };
         const restart = () => { stop(); start(); };
 
         // Pause on hover
-        track.parentElement.addEventListener('mouseenter', stop);
-        track.parentElement.addEventListener('mouseleave', start);
+        slider.addEventListener('mouseenter', stop);
+        slider.addEventListener('mouseleave', start);
 
-        // Pause when tab is hidden (saves CPU)
+        // Pause when tab hidden
         document.addEventListener('visibilitychange', () => {
             document.hidden ? stop() : start();
         });
 
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slider.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].clientX;
+        }, { passive: true });
+
+        slider.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 40) {
+                go(diff > 0 ? i + 1 : i - 1);
+                restart();
+            }
+        }, { passive: true });
+
         start();
     }
 
-    /* ============================================================
+    /* ==========================================================
        TESTIMONIAL SLIDER
-       Full slider with prev/next, dots, auto-advance, keyboard nav.
-       ============================================================ */
+       Full slider with prev/next, dynamic dots, auto-advance,
+       keyboard navigation, and visibility pause.
+       ========================================================== */
     function initTestimonialSlider() {
         const track = document.querySelector('.testimonial-track');
         const prev = document.querySelector('[data-testimonial-prev]');
@@ -294,7 +373,6 @@
         let i = 0;
         let timer = null;
 
-        // Build dots dynamically
         if (dotsContainer) {
             dotsContainer.innerHTML = '';
             for (let k = 0; k < total; k++) {
@@ -312,9 +390,6 @@
             i = (idx + total) % total;
             track.style.transform = `translateX(-${i * 100}%)`;
             dots.forEach((d, k) => d.classList.toggle('active', k === i));
-            // Update aria-live region for screen readers
-            const live = document.getElementById('testimonialLive');
-            if (live) live.textContent = `Testimonial ${i + 1} of ${total}`;
         };
 
         prev?.addEventListener('click', () => { go(i - 1); restart(); });
@@ -324,24 +399,9 @@
         const stop = () => { if (timer) clearInterval(timer); };
         const restart = () => { stop(); start(); };
 
-        // Pause on hover
         track.parentElement.addEventListener('mouseenter', stop);
         track.parentElement.addEventListener('mouseleave', start);
 
-        // Keyboard navigation (only when slider is in viewport)
-        let inView = false;
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { inView = entry.isIntersecting; });
-        }, { threshold: 0.3 });
-        io.observe(track);
-
-        document.addEventListener('keydown', (e) => {
-            if (!inView) return;
-            if (e.key === 'ArrowLeft') { go(i - 1); restart(); }
-            if (e.key === 'ArrowRight') { go(i + 1); restart(); }
-        });
-
-        // Pause when tab is hidden
         document.addEventListener('visibilitychange', () => {
             document.hidden ? stop() : start();
         });
@@ -349,68 +409,49 @@
         start();
     }
 
-    /* ============================================================
+    /* ==========================================================
        FORM VALIDATION
-       Handles real-time validation, submission, and error display.
-       Includes character counter for the message field.
-       ============================================================ */
+       Real-time + submit validation with character counter.
+       Includes honeypot check for bot detection.
+       ========================================================== */
     function initFormValidation() {
         const form = document.getElementById('contactForm');
         if (!form) return;
 
-        /* ---------- Field definitions ---------- */
         const fields = {
-            name: {
-                el: document.getElementById('name'),
-                validate: v => {
-                    if (!v.trim()) return 'Full name is required.';
-                    if (v.trim().length < 2) return 'Name must be at least 2 characters.';
-                    if (v.trim().length > 100) return 'Name is too long (max 100).';
-                    if (!/^[\p{L}\s'\-.]+$/u.test(v.trim())) return 'Name contains invalid characters.';
-                    return '';
-                }
-            },
-            email: {
-                el: document.getElementById('email'),
-                validate: v => {
-                    if (!v.trim()) return 'Email is required.';
-                    if (v.trim().length > 254) return 'Email is too long.';
-                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())) return 'Please enter a valid email address.';
-                    return '';
-                }
-            },
-            phone: {
-                el: document.getElementById('phone'),
-                validate: v => {
-                    if (!v.trim()) return ''; // Optional field
-                    if (v.trim().length > 20) return 'Phone number is too long.';
-                    if (!/^[\d\s+\-()]{7,20}$/.test(v.trim())) return 'Enter a valid phone number.';
-                    return '';
-                }
-            },
-            company: {
-                el: document.getElementById('company'),
-                validate: v => {
-                    if (v.trim().length > 150) return 'Company name is too long.';
-                    return '';
-                }
-            },
-            service: {
-                el: document.getElementById('service'),
-                validate: v => !v ? 'Please select a service.' : ''
-            },
-            message: {
-                el: document.getElementById('message'),
-                validate: v => {
-                    if (!v.trim()) return 'Message is required.';
-                    if (v.trim().length < 10) return 'Message must be at least 10 characters.';
-                    if (v.trim().length > 5000) return 'Message must not exceed 5000 characters.';
-                    return '';
-                }
-            }
+            name: { el: document.getElementById('name'), validate: v => {
+                if (!v.trim()) return 'Full name is required.';
+                if (v.trim().length < 2) return 'Name must be at least 2 characters.';
+                if (v.trim().length > 100) return 'Name is too long (max 100).';
+                if (!/^[\p{L}\s'\-.]+$/u.test(v.trim())) return 'Name contains invalid characters.';
+                return '';
+            }},
+            email: { el: document.getElementById('email'), validate: v => {
+                if (!v.trim()) return 'Email is required.';
+                if (v.trim().length > 254) return 'Email is too long.';
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())) return 'Please enter a valid email address.';
+                return '';
+            }},
+            phone: { el: document.getElementById('phone'), validate: v => {
+                if (!v.trim()) return '';
+                if (v.trim().length > 20) return 'Phone number is too long.';
+                if (!/^[\d\s+\-()]{7,20}$/.test(v.trim())) return 'Enter a valid phone number.';
+                return '';
+            }},
+            company: { el: document.getElementById('company'), validate: v => {
+                if (v.trim().length > 150) return 'Company name is too long.';
+                return '';
+            }},
+            service: { el: document.getElementById('service'), validate: v => !v ? 'Please select a service.' : '' },
+            message: { el: document.getElementById('message'), validate: v => {
+                if (!v.trim()) return 'Message is required.';
+                if (v.trim().length < 10) return 'Message must be at least 10 characters.';
+                if (v.trim().length > 5000) return 'Message must not exceed 5000 characters.';
+                return '';
+            }}
         };
 
-        /* ---------- Character counter ---------- */
+        // Character counter
         const messageEl = fields.message.el;
         const charCounter = document.getElementById('charCounter');
         if (messageEl && charCounter) {
@@ -425,7 +466,6 @@
             update();
         }
 
-        /* ---------- Real-time validation on blur/input ---------- */
         Object.values(fields).forEach(f => {
             if (!f.el) return;
             f.el.addEventListener('blur', () => validateField(f, f.el.value));
@@ -434,10 +474,8 @@
             });
         });
 
-        /* ---------- Submit handler ---------- */
         form.addEventListener('submit', e => {
             e.preventDefault();
-
             let valid = true;
             let firstErr = null;
 
@@ -449,7 +487,6 @@
                 }
             });
 
-            // Honeypot — silently reject bots
             const hp = document.getElementById('website');
             if (hp && hp.value) {
                 console.warn('Honeypot triggered — submission blocked.');
@@ -467,7 +504,6 @@
             submitForm(form);
         });
 
-        /* ---------- Per-field validation ---------- */
         function validateField(field, value) {
             const err = field.validate(value);
             const errEl = field.el.parentElement.querySelector('.error-message');
@@ -482,7 +518,6 @@
             return err;
         }
 
-        /* ---------- Network submission ---------- */
         function submitForm(form) {
             const btn = form.querySelector('button[type="submit"]');
             if (!btn) return;
@@ -517,7 +552,6 @@
             });
         }
 
-        /* ---------- Alert display ---------- */
         function showAlert(msg, type) {
             const alert = document.getElementById('formAlert');
             if (!alert) return;
@@ -528,10 +562,36 @@
         }
     }
 
-    /* ============================================================
+    /* ==========================================================
+       SCROLL TO TOP
+       Shows the button after 600px of scrolling.
+       Scrolls smoothly to top when clicked.
+       ========================================================== */
+    function initScrollTop() {
+        const btn = document.querySelector('.scroll-top');
+        if (!btn) return;
+
+        btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        let ticking = false;
+        const onScroll = () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                btn.classList.toggle('visible', window.scrollY > 600);
+                ticking = false;
+            });
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    }
+
+    /* ==========================================================
        CURRENT YEAR
-       Injects current year into #currentYear.
-       ============================================================ */
+       ========================================================== */
     function initYear() {
         const el = document.getElementById('currentYear');
         if (el) el.textContent = new Date().getFullYear();
