@@ -80,11 +80,11 @@
     <symbol id="i-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
 </svg>
 
 <!-- ============================================
-     HEADER
+     HEADER — CONSISTENT WITH INDEX
      ============================================ -->
 <header class="site-header" role="banner">
     <div class="header-inner">
@@ -104,18 +104,18 @@
                 <li class="nav-dropdown">
                     <a href="../services.html">Services</a>
                     <ul class="dropdown-menu">
-                        <li><a href="custom-software-development.html" class="active">Custom Software Development</a></li>
-                        <li><a href="hardware-it-infrastructure.html">Hardware &amp; IT Infrastructure</a></li>
-                        <li><a href="digital-transformation.html">Digital Transformation</a></li>
-                        <li><a href="it-consulting-advisory.html">IT Consulting &amp; Advisory</a></li>
-                        <li><a href="cloud-solutions.html">Cloud Solutions</a></li>
-                        <li><a href="cybersecurity.html">Cybersecurity</a></li>
-                        <li><a href="networking-solutions.html">Networking Solutions</a></li>
-                        <li><a href="voip-communications.html">VoIP &amp; Communications</a></li>
-                        <li><a href="managed-it-services.html">Managed IT Services</a></li>
-                        <li><a href="data-analytics-bi.html">Data Analytics &amp; BI</a></li>
-                        <li><a href="erp-business-systems.html">ERP &amp; Business Systems</a></li>
-                        <li><a href="ict-training.html">ICT Training</a></li>
+                        <li><a href="custom-software-development.html" class="active"><span class="dd-icon"><svg><use href="#i-software"/></svg></span><span class="dd-label"><strong>Custom Software Development</strong><span>Bespoke enterprise applications</span></span></a></li>
+                        <li><a href="hardware-it-infrastructure.html"><span class="dd-icon"><svg><use href="#i-hardware"/></svg></span><span class="dd-label"><strong>Hardware &amp; IT Infrastructure</strong><span>Servers, workstations, networks</span></span></a></li>
+                        <li><a href="digital-transformation.html"><span class="dd-icon"><svg><use href="#i-transform"/></svg></span><span class="dd-label"><strong>Digital Transformation</strong><span>Modernise legacy systems</span></span></a></li>
+                        <li><a href="it-consulting-advisory.html"><span class="dd-icon"><svg><use href="#i-consult"/></svg></span><span class="dd-label"><strong>IT Consulting &amp; Advisory</strong><span>Independent strategy and audits</span></span></a></li>
+                        <li><a href="cloud-solutions.html"><span class="dd-icon"><svg><use href="#i-cloud"/></svg></span><span class="dd-label"><strong>Cloud Solutions</strong><span>AWS, Azure, Google Cloud</span></span></a></li>
+                        <li><a href="cybersecurity.html"><span class="dd-icon"><svg><use href="#i-shield"/></svg></span><span class="dd-label"><strong>Cybersecurity</strong><span>POPIA, threat detection, EDR</span></span></a></li>
+                        <li><a href="networking-solutions.html"><span class="dd-icon"><svg><use href="#i-network"/></svg></span><span class="dd-label"><strong>Networking Solutions</strong><span>LAN/WAN, Wi-Fi, structured cabling</span></span></a></li>
+                        <li><a href="voip-communications.html"><span class="dd-icon"><svg><use href="#i-phone"/></svg></span><span class="dd-label"><strong>VoIP &amp; Communications</strong><span>Cloud PBX, SIP trunking</span></span></a></li>
+                        <li><a href="managed-it-services.html"><span class="dd-icon"><svg><use href="#i-managed"/></svg></span><span class="dd-label"><strong>Managed IT Services</strong><span>24/7 monitoring and support</span></span></a></li>
+                        <li><a href="data-analytics-bi.html"><span class="dd-icon"><svg><use href="#i-analytics"/></svg></span><span class="dd-label"><strong>Data Analytics &amp; BI</strong><span>Dashboards and predictive models</span></span></a></li>
+                        <li><a href="erp-business-systems.html"><span class="dd-icon"><svg><use href="#i-erp"/></svg></span><span class="dd-label"><strong>ERP &amp; Business Systems</strong><span>ERP, CRM, HR platforms</span></span></a></li>
+                        <li><a href="ict-training.html"><span class="dd-icon"><svg><use href="#i-training"/></svg></span><span class="dd-label"><strong>ICT Training</strong><span>Digital skills and empowerment</span></span></a></li>
                     </ul>
                 </li>
                 <li><a href="../contact.html">Contact</a></li>
@@ -126,35 +126,90 @@
 </header>
 
 <!-- ============================================
-     SERVICE HERO — unified image background
+     SERVICE HERO — Split layout with facts card
      ============================================ -->
 <section class="page-hero page-hero--image">
     <div class="container">
-        <div style="max-width: 900px;" data-reveal>
-            <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="../index.html">Home</a>
-                <span class="sep">/</span>
-                <a href="../services.html">Services</a>
-                <span class="sep">/</span>
-                <span>Custom Software Development</span>
-            </nav>
-            <div style="display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-4);">
-                <span class="svc-icon" style="margin: 0;"><svg width="22" height="22"><use href="#i-software"/></svg></span>
-                <span class="eyebrow" style="margin: 0;">Service · 01</span>
-            </div>
-            <h1>Custom Software Development</h1>
-            <p class="lead" style="max-width: 640px; margin-top: var(--s-4);">Bespoke enterprise applications, web systems, mobile apps, and API integrations — engineered precisely for your business.</p>
+        <div class="svc-hero-split" data-reveal>
+            <div class="svc-hero-content">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span class="sep">/</span>
+                    <a href="../services.html">Services</a>
+                    <span class="sep">/</span>
+                    <span>Custom Software Development</span>
+                </nav>
 
-            <div class="hero-cta" style="margin-top: var(--s-8);">
-                <a href="../contact.html" class="btn btn-copper btn-lg btn-arrow">Start a project</a>
-                <a href="#capabilities" class="btn btn-outline btn-lg">See capabilities</a>
+                <div class="svc-hero-tag">
+                    <span class="svc-hero-tag-icon"><svg><use href="#i-software"/></svg></span>
+                    <span class="svc-hero-tag-label">Service · 01 of 12</span>
+                </div>
+
+                <h1>Custom Software Development</h1>
+                <p class="lead">Bespoke enterprise applications, web systems, mobile apps, and API integrations — engineered precisely for your business.</p>
+
+                <div class="hero-cta">
+                    <a href="../contact.html" class="btn btn-copper btn-lg btn-arrow">Start a project</a>
+                    <a href="#capabilities" class="btn btn-outline-light btn-lg">See capabilities</a>
+                </div>
+            </div>
+
+            <div class="svc-hero-card">
+                <div class="svc-hero-card-head">
+                    <span class="label">At a Glance</span>
+                    <span class="status">Available</span>
+                </div>
+                <div class="svc-hero-facts">
+                    <div class="svc-hero-fact">
+                        <span class="fact-value">8-12w</span>
+                        <span class="fact-label">MVP Timeline</span>
+                    </div>
+                    <div class="svc-hero-fact">
+                        <span class="fact-value">100%</span>
+                        <span class="fact-label">IP Transfer</span>
+                    </div>
+                    <div class="svc-hero-fact">
+                        <span class="fact-value">6</span>
+                        <span class="fact-label">Process Steps</span>
+                    </div>
+                    <div class="svc-hero-fact">
+                        <span class="fact-value">Lv1</span>
+                        <span class="fact-label">B-BBEE</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ============================================
-     SERVICE BODY — Editorial two-column
+     SERVICE STATS BAND
+     ============================================ -->
+<section class="svc-stats-band">
+    <div class="container">
+        <div class="svc-stats-row">
+            <div class="svc-stat" data-reveal>
+                <span class="num"><span data-count="8">0</span><span class="accent">-12w</span></span>
+                <span class="lbl">MVP Timeline</span>
+            </div>
+            <div class="svc-stat" data-reveal data-reveal-delay="1">
+                <span class="num"><span data-count="100">0</span><span class="accent">%</span></span>
+                <span class="lbl">IP Transfer</span>
+            </div>
+            <div class="svc-stat" data-reveal data-reveal-delay="2">
+                <span class="num"><span data-count="6">0</span></span>
+                <span class="lbl">Delivery Phases</span>
+            </div>
+            <div class="svc-stat" data-reveal data-reveal-delay="3">
+                <span class="num">L<span class="accent">v</span>1</span>
+                <span class="lbl">B-BBEE Status</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SERVICE BODY — Editorial 2-col
      ============================================ -->
 <section class="section bg-white" id="capabilities">
     <div class="container">
@@ -163,99 +218,127 @@
             <!-- Main content -->
             <div class="service-detail-content">
 
-                <div data-reveal>
+                <!-- Overview -->
+                <div class="svc-section" data-reveal>
                     <span class="eyebrow">Overview</span>
                     <h2>Software that fits your business — not the other way around.</h2>
                     <p>At Luminous X Technologies, we design and build bespoke enterprise applications, web systems, mobile apps, workflow automation tools, and API integrations that are precisely aligned to your business objectives. We don't believe in one-size-fits-all — every line of code we write serves a specific purpose for your organisation.</p>
                     <p>Our software development process is collaborative, transparent, and agile. From initial discovery through to deployment and ongoing support, we work closely with your team to ensure the final product exceeds expectations.</p>
                 </div>
 
-                <div data-reveal style="margin-top: var(--s-12);">
+                <!-- Deliverables — 2-col cards -->
+                <div class="svc-section" data-reveal>
                     <span class="eyebrow">Deliverables</span>
                     <h2>What we build.</h2>
-                    <ul class="deliverable-list">
-                        <li>Enterprise-grade web applications and portals</li>
-                        <li>Native and cross-platform mobile applications (iOS &amp; Android)</li>
-                        <li>Workflow automation and business process management tools</li>
-                        <li>API design, development, and third-party integrations</li>
-                        <li>Database design, optimisation, and migration</li>
-                        <li>Legacy system modernisation and re-engineering</li>
-                        <li>Microservices architecture and containerised deployments</li>
-                        <li>Continuous integration and continuous deployment (CI/CD) pipelines</li>
-                    </ul>
-                </div>
-
-                <div data-reveal style="margin-top: var(--s-12);">
-                    <span class="eyebrow">Technology Stack</span>
-                    <h2>Modern tools. Proven technologies.</h2>
-                    <p>We work with modern, proven technologies to ensure your software is scalable, secure, and maintainable:</p>
-
-                    <div class="stack-grid">
-                        <div class="stack-item">
-                            <div class="stack-label">Frontend</div>
-                            <div class="stack-values">React · Vue.js · Angular<br>HTML5 · CSS3 · TypeScript</div>
+                    <div class="svc-deliverables">
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Enterprise-grade web applications and portals</span>
                         </div>
-                        <div class="stack-item">
-                            <div class="stack-label">Backend</div>
-                            <div class="stack-values">Node.js · Python<br>PHP (Laravel) · Java · .NET Core</div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Native &amp; cross-platform mobile apps (iOS &amp; Android)</span>
                         </div>
-                        <div class="stack-item">
-                            <div class="stack-label">Mobile</div>
-                            <div class="stack-values">React Native · Flutter<br>Swift · Kotlin</div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Workflow automation and business process tools</span>
                         </div>
-                        <div class="stack-item">
-                            <div class="stack-label">Databases</div>
-                            <div class="stack-values">PostgreSQL · MySQL<br>MongoDB · SQL Server</div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>API design, development, and third-party integrations</span>
                         </div>
-                        <div class="stack-item">
-                            <div class="stack-label">Cloud &amp; DevOps</div>
-                            <div class="stack-values">AWS · Azure · GCP<br>Docker · Kubernetes · Jenkins</div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Database design, optimisation, and migration</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Legacy system modernisation and re-engineering</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Microservices architecture and containerised deployments</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>CI/CD pipelines and DevOps enablement</span>
                         </div>
                     </div>
                 </div>
 
-                <div data-reveal style="margin-top: var(--s-12);">
+                <!-- Technology Stack -->
+                <div class="svc-section" data-reveal>
+                    <span class="eyebrow">Technology Stack</span>
+                    <h2>Modern tools. Proven technologies.</h2>
+                    <p>We work with modern, proven technologies to ensure your software is scalable, secure, and maintainable.</p>
+
+                    <div class="svc-stack-grid">
+                        <div class="svc-stack-card">
+                            <div class="svc-stack-label">Frontend</div>
+                            <div class="svc-stack-values">React · Vue.js · Angular<br>HTML5 · CSS3 · TypeScript</div>
+                        </div>
+                        <div class="svc-stack-card">
+                            <div class="svc-stack-label">Backend</div>
+                            <div class="svc-stack-values">Node.js · Python<br>PHP (Laravel) · Java · .NET Core</div>
+                        </div>
+                        <div class="svc-stack-card">
+                            <div class="svc-stack-label">Mobile</div>
+                            <div class="svc-stack-values">React Native · Flutter<br>Swift · Kotlin</div>
+                        </div>
+                        <div class="svc-stack-card">
+                            <div class="svc-stack-label">Databases</div>
+                            <div class="svc-stack-values">PostgreSQL · MySQL<br>MongoDB · SQL Server</div>
+                        </div>
+                        <div class="svc-stack-card">
+                            <div class="svc-stack-label">Cloud &amp; DevOps</div>
+                            <div class="svc-stack-values">AWS · Azure · GCP<br>Docker · Kubernetes · Jenkins</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process — Vertical timeline -->
+                <div class="svc-section" data-reveal>
                     <span class="eyebrow">Our Process</span>
                     <h2>Six disciplined steps from idea to launch.</h2>
 
-                    <div class="service-process">
-                        <div class="service-process-step">
-                            <span class="step-num">01</span>
+                    <div class="svc-timeline">
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">01</div>
                             <div>
                                 <h4>Discovery &amp; Requirements</h4>
                                 <p>Deep dive into your business processes, pain points, and goals.</p>
                             </div>
                         </div>
-                        <div class="service-process-step">
-                            <span class="step-num">02</span>
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">02</div>
                             <div>
                                 <h4>Design &amp; Prototyping</h4>
                                 <p>UI/UX design, wireframes, and interactive prototypes for your approval.</p>
                             </div>
                         </div>
-                        <div class="service-process-step">
-                            <span class="step-num">03</span>
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">03</div>
                             <div>
                                 <h4>Agile Development</h4>
                                 <p>Iterative sprints with regular demos and feedback loops.</p>
                             </div>
                         </div>
-                        <div class="service-process-step">
-                            <span class="step-num">04</span>
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">04</div>
                             <div>
                                 <h4>Quality Assurance</h4>
                                 <p>Comprehensive testing including unit, integration, and user acceptance testing.</p>
                             </div>
                         </div>
-                        <div class="service-process-step">
-                            <span class="step-num">05</span>
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">05</div>
                             <div>
                                 <h4>Deployment &amp; Training</h4>
                                 <p>Smooth go-live with full documentation and team training.</p>
                             </div>
                         </div>
-                        <div class="service-process-step">
-                            <span class="step-num">06</span>
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">06</div>
                             <div>
                                 <h4>Ongoing Support</h4>
                                 <p>Post-launch maintenance, enhancements, and performance monitoring.</p>
@@ -264,11 +347,49 @@
                     </div>
                 </div>
 
-                <div data-reveal style="margin-top: var(--s-12);">
+                <!-- Benefits — modern icon cards -->
+                <div class="svc-section" data-reveal>
+                    <span class="eyebrow">Why Custom</span>
+                    <h2>What changes when you build bespoke.</h2>
+                    <div class="svc-benefits">
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-software"/></svg></div>
+                            <h4>Fits your process</h4>
+                            <p>Software that reflects how you actually work — not the other way around.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-analytics"/></svg></div>
+                            <h4>Competitive edge</h4>
+                            <p>Capability your competitors can't buy off the shelf.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-managed"/></svg></div>
+                            <h4>Scales with you</h4>
+                            <p>Architected for growth, not constrained by packaged limits.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-shield"/></svg></div>
+                            <h4>Security by design</h4>
+                            <p>Built secure from day one — not bolted on later.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-cloud"/></svg></div>
+                            <h4>No per-seat taxes</h4>
+                            <p>Own the platform. No recurring vendor licence surprises.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div>
+                            <h4>Full IP ownership</h4>
+                            <p>You own the code, the repositories, and the future direction.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ — modern accordion -->
+                <div class="svc-section" data-reveal>
                     <span class="eyebrow">Common Questions</span>
                     <h2>Things clients ask us.</h2>
-
-                    <div class="faq-list">
+                    <div class="svc-faq">
                         <details>
                             <summary>How long does a typical project take?</summary>
                             <p>Timeline depends on scope. A focused web app might ship in 8–12 weeks. A complex enterprise platform usually takes 4–8 months. We'll give you a realistic estimate during discovery — never inflated, never optimistic.</p>
@@ -342,7 +463,7 @@
 </section>
 
 <!-- ============================================
-     RELATED SERVICES
+     RELATED SERVICES — modern cards
      ============================================ -->
 <section class="section bg-cream">
     <div class="container">
@@ -354,33 +475,33 @@
             <a href="../services.html" class="btn btn-outline btn-arrow">View all services</a>
         </div>
 
-        <div class="grid grid-3" style="gap: var(--s-5);">
-            <article class="svc-card" data-reveal>
+        <div class="svc-related-grid">
+            <a href="cloud-solutions.html" class="svc-related-card" data-reveal>
                 <div class="svc-icon"><svg width="22" height="22"><use href="#i-cloud"/></svg></div>
                 <h3>Cloud Solutions</h3>
                 <p>Host your new software on resilient cloud infrastructure built for scale.</p>
-                <a href="cloud-solutions.html" class="svc-arrow">Learn more</a>
-            </article>
+                <span class="svc-arrow">Learn more</span>
+            </a>
 
-            <article class="svc-card" data-reveal data-reveal-delay="1">
+            <a href="cybersecurity.html" class="svc-related-card" data-reveal data-reveal-delay="1">
                 <div class="svc-icon"><svg width="22" height="22"><use href="#i-shield"/></svg></div>
                 <h3>Cybersecurity</h3>
                 <p>Secure your application with threat detection, penetration testing, and POPIA compliance.</p>
-                <a href="cybersecurity.html" class="svc-arrow">Learn more</a>
-            </article>
+                <span class="svc-arrow">Learn more</span>
+            </a>
 
-            <article class="svc-card" data-reveal data-reveal-delay="2">
+            <a href="data-analytics-bi.html" class="svc-related-card" data-reveal data-reveal-delay="2">
                 <div class="svc-icon"><svg width="22" height="22"><use href="#i-analytics"/></svg></div>
                 <h3>Data Analytics &amp; BI</h3>
                 <p>Turn the data your software collects into dashboards and predictive insight.</p>
-                <a href="data-analytics-bi.html" class="svc-arrow">Learn more</a>
-            </article>
+                <span class="svc-arrow">Learn more</span>
+            </a>
         </div>
     </div>
 </section>
 
 <!-- ============================================
-     CTA FINAL — unified image background
+     CTA FINAL
      ============================================ -->
 <section class="cta-final cta-final--image">
     <div class="container">

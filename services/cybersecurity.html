@@ -31,6 +31,7 @@
 </head>
 <body>
 
+<!-- SVG Sprite (same as before) -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
     <symbol id="i-software" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
     <symbol id="i-hardware" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
@@ -47,9 +48,12 @@
     <symbol id="i-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
 </svg>
 
+<!-- ============================================
+     HEADER — consistent with other pages
+     ============================================ -->
 <header class="site-header" role="banner">
     <div class="header-inner">
         <a href="../index.html" class="logo" aria-label="Luminous X Technologies">
@@ -64,18 +68,18 @@
                 <li class="nav-dropdown">
                     <a href="../services.html">Services</a>
                     <ul class="dropdown-menu">
-                        <li><a href="custom-software-development.html">Custom Software Development</a></li>
-                        <li><a href="hardware-it-infrastructure.html">Hardware &amp; IT Infrastructure</a></li>
-                        <li><a href="digital-transformation.html">Digital Transformation</a></li>
-                        <li><a href="it-consulting-advisory.html">IT Consulting &amp; Advisory</a></li>
-                        <li><a href="cloud-solutions.html">Cloud Solutions</a></li>
-                        <li><a href="cybersecurity.html" class="active">Cybersecurity</a></li>
-                        <li><a href="networking-solutions.html">Networking Solutions</a></li>
-                        <li><a href="voip-communications.html">VoIP &amp; Communications</a></li>
-                        <li><a href="managed-it-services.html">Managed IT Services</a></li>
-                        <li><a href="data-analytics-bi.html">Data Analytics &amp; BI</a></li>
-                        <li><a href="erp-business-systems.html">ERP &amp; Business Systems</a></li>
-                        <li><a href="ict-training.html">ICT Training</a></li>
+                        <li><a href="custom-software-development.html"><span class="dd-icon"><svg><use href="#i-software"/></svg></span><span class="dd-label"><strong>Custom Software Development</strong><span>Bespoke enterprise applications</span></span></a></li>
+                        <li><a href="hardware-it-infrastructure.html"><span class="dd-icon"><svg><use href="#i-hardware"/></svg></span><span class="dd-label"><strong>Hardware &amp; IT Infrastructure</strong><span>Servers, workstations, networks</span></span></a></li>
+                        <li><a href="digital-transformation.html"><span class="dd-icon"><svg><use href="#i-transform"/></svg></span><span class="dd-label"><strong>Digital Transformation</strong><span>Modernise legacy systems</span></span></a></li>
+                        <li><a href="it-consulting-advisory.html"><span class="dd-icon"><svg><use href="#i-consult"/></svg></span><span class="dd-label"><strong>IT Consulting &amp; Advisory</strong><span>Independent strategy and audits</span></span></a></li>
+                        <li><a href="cloud-solutions.html"><span class="dd-icon"><svg><use href="#i-cloud"/></svg></span><span class="dd-label"><strong>Cloud Solutions</strong><span>AWS, Azure, Google Cloud</span></span></a></li>
+                        <li><a href="cybersecurity.html" class="active"><span class="dd-icon"><svg><use href="#i-shield"/></svg></span><span class="dd-label"><strong>Cybersecurity</strong><span>POPIA, threat detection, EDR</span></span></a></li>
+                        <li><a href="networking-solutions.html"><span class="dd-icon"><svg><use href="#i-network"/></svg></span><span class="dd-label"><strong>Networking Solutions</strong><span>LAN/WAN, Wi-Fi, cabling</span></span></a></li>
+                        <li><a href="voip-communications.html"><span class="dd-icon"><svg><use href="#i-phone"/></svg></span><span class="dd-label"><strong>VoIP &amp; Communications</strong><span>Cloud PBX, SIP trunking</span></span></a></li>
+                        <li><a href="managed-it-services.html"><span class="dd-icon"><svg><use href="#i-managed"/></svg></span><span class="dd-label"><strong>Managed IT Services</strong><span>24/7 monitoring and support</span></span></a></li>
+                        <li><a href="data-analytics-bi.html"><span class="dd-icon"><svg><use href="#i-analytics"/></svg></span><span class="dd-label"><strong>Data Analytics &amp; BI</strong><span>Dashboards and predictive models</span></span></a></li>
+                        <li><a href="erp-business-systems.html"><span class="dd-icon"><svg><use href="#i-erp"/></svg></span><span class="dd-label"><strong>ERP &amp; Business Systems</strong><span>ERP, CRM, HR platforms</span></span></a></li>
+                        <li><a href="ict-training.html"><span class="dd-icon"><svg><use href="#i-training"/></svg></span><span class="dd-label"><strong>ICT Training</strong><span>Digital skills and empowerment</span></span></a></li>
                     </ul>
                 </li>
                 <li><a href="../contact.html">Contact</a></li>
@@ -85,90 +89,264 @@
     </div>
 </header>
 
+<!-- ============================================
+     SERVICE HERO — Split layout
+     ============================================ -->
 <section class="page-hero page-hero--image">
     <div class="container">
-        <div style="max-width: 900px;" data-reveal>
-            <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="../index.html">Home</a>
-                <span class="sep">/</span>
-                <a href="../services.html">Services</a>
-                <span class="sep">/</span>
-                <span>Cybersecurity</span>
-            </nav>
-            <div style="display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-4);">
-                <span class="svc-icon" style="margin: 0;"><svg width="22" height="22"><use href="#i-shield"/></svg></span>
-                <span class="eyebrow" style="margin: 0;">Service · 06</span>
+        <div class="svc-hero-split" data-reveal>
+            <div class="svc-hero-content">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span class="sep">/</span>
+                    <a href="../services.html">Services</a>
+                    <span class="sep">/</span>
+                    <span>Cybersecurity</span>
+                </nav>
+
+                <div class="svc-hero-tag">
+                    <span class="svc-hero-tag-icon"><svg><use href="#i-shield"/></svg></span>
+                    <span class="svc-hero-tag-label">Service · 06 of 12</span>
+                </div>
+
+                <h1>Cybersecurity</h1>
+                <p class="lead">Protect your business from evolving threats with layered, proactive security architecture — from endpoint to edge.</p>
+
+                <div class="hero-cta">
+                    <a href="../contact.html" class="btn btn-copper btn-lg btn-arrow">Request a security audit</a>
+                    <a href="#capabilities" class="btn btn-outline-light btn-lg">See capabilities</a>
+                </div>
             </div>
-            <h1>Cybersecurity</h1>
-            <p class="lead" style="max-width: 640px; margin-top: var(--s-4);">Protect your business from evolving threats with layered, proactive security architecture.</p>
-            <div class="hero-cta" style="margin-top: var(--s-8);">
-                <a href="../contact.html" class="btn btn-copper btn-lg btn-arrow">Request a security audit</a>
-                <a href="#capabilities" class="btn btn-outline btn-lg">See capabilities</a>
+
+            <div class="svc-hero-card">
+                <div class="svc-hero-card-head">
+                    <span class="label">At a Glance</span>
+                    <span class="status">Available</span>
+                </div>
+                <div class="svc-hero-facts">
+                    <div class="svc-hero-fact">
+                        <span class="fact-value">24/7</span>
+                        <span class="fact-label">SOC Coverage</span>
+                    </div>
+                    <div class="svc-hero-fact">
+                        <span class="fact-value">10d</span>
+                        <span class="fact-label">Risk Register</span>
+                    </div>
+                    <div class="svc-hero-fact">
+                        <span class="fact-value">POPIA</span>
+                        <span class="fact-label">Compliant</span>
+                    </div>
+                    <div class="svc-hero-fact">
+                        <span class="fact-value">Lv1</span>
+                        <span class="fact-label">B-BBEE</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ============================================
+     SERVICE STATS BAND
+     ============================================ -->
+<section class="svc-stats-band">
+    <div class="container">
+        <div class="svc-stats-row">
+            <div class="svc-stat" data-reveal>
+                <span class="num">24<span class="accent">/7</span></span>
+                <span class="lbl">Monitoring</span>
+            </div>
+            <div class="svc-stat" data-reveal data-reveal-delay="1">
+                <span class="num"><span data-count="10">0</span><span class="accent">d</span></span>
+                <span class="lbl">Risk Assessment</span>
+            </div>
+            <div class="svc-stat" data-reveal data-reveal-delay="2">
+                <span class="num"><span data-count="100">0</span><span class="accent">%</span></span>
+                <span class="lbl">POPIA Aligned</span>
+            </div>
+            <div class="svc-stat" data-reveal data-reveal-delay="3">
+                <span class="num">L<span class="accent">v</span>1</span>
+                <span class="lbl">B-BBEE Status</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SERVICE BODY — Editorial 2-col
+     ============================================ -->
 <section class="section bg-white" id="capabilities">
     <div class="container">
         <div class="service-detail-grid" style="display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--s-16); align-items: start;">
+
+            <!-- Main content -->
             <div class="service-detail-content">
-                <div data-reveal>
+
+                <!-- Overview -->
+                <div class="svc-section" data-reveal>
                     <span class="eyebrow">Overview</span>
                     <h2>Security that anticipates, not just reacts.</h2>
                     <p>In an era of increasingly sophisticated cyber threats, protecting your organisation's data, systems, and reputation is paramount. Luminous X Technologies provides comprehensive cybersecurity solutions including threat detection, endpoint protection, network security, vulnerability assessments, POPIA compliance frameworks, and incident response.</p>
-                    <p>We take a proactive, layered approach to security, ensuring your business is protected against threats before they materialise.</p>
+                    <p>We take a proactive, layered approach to security — ensuring your business is protected against threats before they materialise.</p>
                 </div>
-                <div data-reveal style="margin-top: var(--s-12);">
+
+                <!-- Deliverables — 2-col cards -->
+                <div class="svc-section" data-reveal>
                     <span class="eyebrow">Deliverables</span>
                     <h2>What we deliver.</h2>
-                    <ul class="deliverable-list">
-                        <li>Security audits and vulnerability assessments</li>
-                        <li>Threat detection and monitoring (SOC-as-a-Service)</li>
-                        <li>Endpoint protection and EDR (Endpoint Detection &amp; Response)</li>
-                        <li>Network security: firewalls, IDS/IPS, segmentation</li>
-                        <li>Email security and anti-phishing solutions</li>
-                        <li>POPIA compliance and data protection advisory</li>
-                        <li>Security awareness training for employees</li>
-                        <li>Incident response planning and execution</li>
-                        <li>Penetration testing and red team exercises</li>
-                    </ul>
+                    <div class="svc-deliverables">
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Security audits and vulnerability assessments</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Threat detection &amp; monitoring (SOC-as-a-Service)</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Endpoint protection &amp; EDR</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Network security: firewalls, IDS/IPS, segmentation</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Email security and anti-phishing</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>POPIA compliance and data protection advisory</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Security awareness training for employees</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Incident response planning and execution</span>
+                        </div>
+                        <div class="svc-deliverable">
+                            <span class="check"><svg><use href="#i-check"/></svg></span>
+                            <span>Penetration testing and red team exercises</span>
+                        </div>
+                    </div>
                 </div>
-                <div data-reveal style="margin-top: var(--s-12);">
+
+                <!-- Process — Vertical timeline -->
+                <div class="svc-section" data-reveal>
                     <span class="eyebrow">Our Framework</span>
                     <h2>Five pillars of defence.</h2>
-                    <div class="service-process">
-                        <div class="service-process-step"><span class="step-num">01</span><div><h4>Identify</h4><p>Understand your assets, data, and potential vulnerabilities.</p></div></div>
-                        <div class="service-process-step"><span class="step-num">02</span><div><h4>Protect</h4><p>Implement controls to safeguard your systems and data.</p></div></div>
-                        <div class="service-process-step"><span class="step-num">03</span><div><h4>Detect</h4><p>Monitor for anomalies and potential security incidents.</p></div></div>
-                        <div class="service-process-step"><span class="step-num">04</span><div><h4>Respond</h4><p>Contain, eradicate, and recover from security incidents.</p></div></div>
-                        <div class="service-process-step"><span class="step-num">05</span><div><h4>Recover</h4><p>Restore operations and improve based on lessons learned.</p></div></div>
+
+                    <div class="svc-timeline">
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">01</div>
+                            <div>
+                                <h4>Identify</h4>
+                                <p>Understand your assets, data, and potential vulnerabilities.</p>
+                            </div>
+                        </div>
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">02</div>
+                            <div>
+                                <h4>Protect</h4>
+                                <p>Implement controls to safeguard your systems and data.</p>
+                            </div>
+                        </div>
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">03</div>
+                            <div>
+                                <h4>Detect</h4>
+                                <p>Monitor for anomalies and potential security incidents.</p>
+                            </div>
+                        </div>
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">04</div>
+                            <div>
+                                <h4>Respond</h4>
+                                <p>Contain, eradicate, and recover from security incidents.</p>
+                            </div>
+                        </div>
+                        <div class="svc-timeline-step">
+                            <div class="step-badge">05</div>
+                            <div>
+                                <h4>Recover</h4>
+                                <p>Restore operations and improve based on lessons learned.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div data-reveal style="margin-top: var(--s-12);">
+
+                <!-- Benefits — modern icon cards -->
+                <div class="svc-section" data-reveal>
                     <span class="eyebrow">Why It Matters</span>
                     <h2>What's at stake.</h2>
-                    <div class="benefits-grid">
-                        <div class="benefit-item"><div class="benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div><div><h4>Protect customer data</h4><p>Prevent breaches that erode trust and expose you to litigation.</p></div></div>
-                        <div class="benefit-item"><div class="benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div><div><h4>POPIA compliance</h4><p>Meet legal obligations for data protection and breach reporting.</p></div></div>
-                        <div class="benefit-item"><div class="benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div><div><h4>Prevent ransomware</h4><p>Avoid the financial and operational impact of an attack.</p></div></div>
-                        <div class="benefit-item"><div class="benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div><div><h4>Protect reputation</h4><p>A single headline breach can undo years of brand building.</p></div></div>
-                        <div class="benefit-item"><div class="benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div><div><h4>Minimise downtime</h4><p>Detect and contain incidents before they halt operations.</p></div></div>
-                        <div class="benefit-item"><div class="benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div><div><h4>Board-level confidence</h4><p>Demonstrate clear security posture to stakeholders and auditors.</p></div></div>
+                    <div class="svc-benefits">
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-shield"/></svg></div>
+                            <h4>Protect customer data</h4>
+                            <p>Prevent breaches that erode trust and expose you to litigation.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div>
+                            <h4>POPIA compliance</h4>
+                            <p>Meet legal obligations for data protection and breach reporting.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-shield"/></svg></div>
+                            <h4>Prevent ransomware</h4>
+                            <p>Avoid the financial and operational impact of an attack.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div>
+                            <h4>Protect reputation</h4>
+                            <p>A single headline breach can undo years of brand building.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-shield"/></svg></div>
+                            <h4>Minimise downtime</h4>
+                            <p>Detect and contain incidents before they halt operations.</p>
+                        </div>
+                        <div class="svc-benefit">
+                            <div class="svc-benefit-icon"><svg width="20" height="20"><use href="#i-check"/></svg></div>
+                            <h4>Board-level confidence</h4>
+                            <p>Demonstrate clear security posture to stakeholders and auditors.</p>
+                        </div>
                     </div>
                 </div>
-                <div data-reveal style="margin-top: var(--s-12);">
+
+                <!-- FAQ — modern accordion -->
+                <div class="svc-section" data-reveal>
                     <span class="eyebrow">Common Questions</span>
                     <h2>Things clients ask us.</h2>
-                    <div class="faq-list">
-                        <details><summary>Where do we start?</summary><p>With a security posture assessment. It takes 1–2 weeks and produces a clear risk register with prioritised remediation steps.</p></details>
-                        <details><summary>Do you provide 24/7 monitoring?</summary><p>Yes. Our SOC-as-a-Service monitors your environment around the clock, with escalation paths defined up front.</p></details>
-                        <details><summary>What about POPIA?</summary><p>We provide compliance advisory, data mapping, consent frameworks, breach response plans, and ongoing audit support — all aligned to POPIA requirements.</p></details>
-                        <details><summary>Can you help after a breach?</summary><p>Yes. Our incident response team can be engaged on retainer, ready to mobilise within hours of a suspected breach.</p></details>
-                        <details><summary>Do you offer penetration testing?</summary><p>Yes — network, web application, and social engineering tests, delivered with structured reporting and re-testing.</p></details>
+                    <div class="svc-faq">
+                        <details>
+                            <summary>Where do we start?</summary>
+                            <p>With a security posture assessment. It takes 1–2 weeks and produces a clear risk register with prioritised remediation steps.</p>
+                        </details>
+                        <details>
+                            <summary>Do you provide 24/7 monitoring?</summary>
+                            <p>Yes. Our SOC-as-a-Service monitors your environment around the clock, with escalation paths defined up front.</p>
+                        </details>
+                        <details>
+                            <summary>What about POPIA?</summary>
+                            <p>We provide compliance advisory, data mapping, consent frameworks, breach response plans, and ongoing audit support — all aligned to POPIA requirements.</p>
+                        </details>
+                        <details>
+                            <summary>Can you help after a breach?</summary>
+                            <p>Yes. Our incident response team can be engaged on retainer, ready to mobilise within hours of a suspected breach.</p>
+                        </details>
+                        <details>
+                            <summary>Do you offer penetration testing?</summary>
+                            <p>Yes — network, web application, and social engineering tests, delivered with structured reporting and re-testing.</p>
+                        </details>
                     </div>
                 </div>
+
             </div>
+
+            <!-- Sticky sidebar -->
             <aside class="service-sidebar" data-reveal="right">
                 <div class="sidebar-cta">
                     <span class="eyebrow" style="color: var(--copper-300);">Let's talk</span>
@@ -176,6 +354,7 @@
                     <p>Free security posture assessment. Clear risk register in 10 business days.</p>
                     <a href="../contact.html" class="btn btn-copper" style="width: 100%;">Request assessment</a>
                 </div>
+
                 <div class="sidebar-card">
                     <h3>All Services</h3>
                     <ul>
@@ -193,6 +372,7 @@
                         <li><a href="ict-training.html">ICT Training</a></li>
                     </ul>
                 </div>
+
                 <div class="sidebar-card">
                     <h3>Prefer to call?</h3>
                     <p style="font-size: var(--fs-sm); color: var(--ink-500); margin-bottom: var(--s-4);">Our team is available Mon–Fri, 08:00 – 17:00 SAST.</p>
@@ -200,24 +380,52 @@
                     <a href="mailto:info@luminousxtech.co.za" class="contact-mini"><svg width="16" height="16" style="color: var(--copper-500);"><use href="#i-mail"/></svg><span>info@luminousxtech.co.za</span></a>
                 </div>
             </aside>
+
         </div>
     </div>
 </section>
 
+<!-- ============================================
+     RELATED SERVICES — modern cards
+     ============================================ -->
 <section class="section bg-cream">
     <div class="container">
         <div class="section-head-row" data-reveal>
-            <div class="section-head"><span class="eyebrow">Related services</span><h2>Often paired with this.</h2></div>
+            <div class="section-head">
+                <span class="eyebrow">Related services</span>
+                <h2>Often paired with this.</h2>
+            </div>
             <a href="../services.html" class="btn btn-outline btn-arrow">View all services</a>
         </div>
-        <div class="grid grid-3" style="gap: var(--s-5);">
-            <article class="svc-card" data-reveal><div class="svc-icon"><svg width="22" height="22"><use href="#i-cloud"/></svg></div><h3>Cloud Solutions</h3><p>Secure cloud architecture with zero-trust design principles.</p><a href="cloud-solutions.html" class="svc-arrow">Learn more</a></article>
-            <article class="svc-card" data-reveal data-reveal-delay="1"><div class="svc-icon"><svg width="22" height="22"><use href="#i-network"/></svg></div><h3>Networking Solutions</h3><p>Secure networks with firewalls, segmentation, and VPNs.</p><a href="networking-solutions.html" class="svc-arrow">Learn more</a></article>
-            <article class="svc-card" data-reveal data-reveal-delay="2"><div class="svc-icon"><svg width="22" height="22"><use href="#i-managed"/></svg></div><h3>Managed IT Services</h3><p>Ongoing monitoring and incident response under SLA.</p><a href="managed-it-services.html" class="svc-arrow">Learn more</a></article>
+
+        <div class="svc-related-grid">
+            <a href="cloud-solutions.html" class="svc-related-card" data-reveal>
+                <div class="svc-icon"><svg width="22" height="22"><use href="#i-cloud"/></svg></div>
+                <h3>Cloud Solutions</h3>
+                <p>Secure cloud architecture with zero-trust design principles.</p>
+                <span class="svc-arrow">Learn more</span>
+            </a>
+
+            <a href="networking-solutions.html" class="svc-related-card" data-reveal data-reveal-delay="1">
+                <div class="svc-icon"><svg width="22" height="22"><use href="#i-network"/></svg></div>
+                <h3>Networking Solutions</h3>
+                <p>Secure networks with firewalls, segmentation, and VPNs.</p>
+                <span class="svc-arrow">Learn more</span>
+            </a>
+
+            <a href="managed-it-services.html" class="svc-related-card" data-reveal data-reveal-delay="2">
+                <div class="svc-icon"><svg width="22" height="22"><use href="#i-managed"/></svg></div>
+                <h3>Managed IT Services</h3>
+                <p>Ongoing monitoring and incident response under SLA.</p>
+                <span class="svc-arrow">Learn more</span>
+            </a>
         </div>
     </div>
 </section>
 
+<!-- ============================================
+     CTA FINAL
+     ============================================ -->
 <section class="cta-final cta-final--image">
     <div class="container">
         <div class="cta-final-inner" data-reveal>
@@ -232,6 +440,9 @@
     </div>
 </section>
 
+<!-- ============================================
+     FOOTER (same as before)
+     ============================================ -->
 <footer class="site-footer" role="contentinfo">
     <div class="container">
         <div class="footer-grid">
