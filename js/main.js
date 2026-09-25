@@ -1,12 +1,11 @@
 /**
  * ============================================================
  * Luminous X Technologies — Main JavaScript
- * Version: 7.0.0
- * Author: Luminous X Technologies
+ * Version: 8.0.0
  * ============================================================
  *
  * Handles:
- *   - Mobile navigation (slide-in, ESC, swipe-to-close)
+ *   - Mobile navigation (full-screen drawer, ESC, swipe, resize)
  *   - Desktop + mobile dropdown menus
  *   - Header scroll effect (throttled with rAF)
  *   - Smooth anchor scrolling (with header offset)
@@ -18,6 +17,7 @@
  *   - Contact form validation (real-time + submit + honeypot)
  *   - Scroll-to-top button visibility
  *   - Dynamic year injection
+ *   - Chatbot loader (self-injecting AI assistant)
  *
  * All functions are idempotent — safe to call multiple times.
  * Wrapped in an IIFE to avoid polluting global scope.
@@ -28,9 +28,6 @@
 
     /* ==========================================================
        BOOTSTRAP
-       Fires on DOMContentLoaded (or immediately if already loaded).
-       Each init function is wrapped in try/catch so one failure
-       doesn't break the others.
        ========================================================== */
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
@@ -51,7 +48,8 @@
             initShowcaseCarousel,
             initFormValidation,
             initScrollTop,
-            initYear
+            initYear,
+            loadChatbot
         ];
         fns.forEach(fn => {
             try { fn(); } catch (e) { console.warn(`${fn.name} failed:`, e); }
@@ -59,11 +57,12 @@
     }
 
     /* ==========================================================
-       MOBILE NAVIGATION
-       - Toggles .open on .nav
-       - Locks body scroll while open
-       - Closes on link tap, ESC, or resize to desktop
-       - Supports horizontal swipe-right to close
+       MOBILE NAVIGATION — Full-height drawer, no-scroll UX
+       - Slide-in from right
+       - Body scroll locked (via .nav-open on body)
+       - Closes on link tap, ESC, resize to desktop
+       - Swipe-right gesture to close
+       - Dropdowns expand inline (no scroll needed)
        ========================================================== */
     function initMobileNav() {
         const toggle = document.querySelector('.mobile-toggle');
@@ -74,6 +73,7 @@
             nav.classList.remove('open');
             toggle.classList.remove('active');
             toggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
             document.body.style.overflow = '';
         };
 
@@ -81,6 +81,7 @@
             nav.classList.add('open');
             toggle.classList.add('active');
             toggle.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('nav-open');
             document.body.style.overflow = 'hidden';
         };
 
@@ -88,10 +89,13 @@
             nav.classList.contains('open') ? close() : open();
         });
 
-        // Close on link tap
+        // Close on link tap (but NOT on dropdown parent toggles)
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) close();
+                // Only close if it's not a dropdown parent (those have href="#")
+                const isDropdownParent = link.parentElement?.classList.contains('nav-dropdown');
+                if (isDropdownParent && window.innerWidth <= 900) return;
+                if (window.innerWidth <= 900) close();
             });
         });
 
@@ -109,17 +113,16 @@
         let touching = false;
 
         nav.addEventListener('touchstart', e => {
-            if (window.innerWidth > 768) return;
+            if (window.innerWidth > 900) return;
             touchStartX = e.touches[0].clientX;
             touchStartY = e.touches[0].clientY;
             touching = true;
         }, { passive: true });
 
         nav.addEventListener('touchmove', e => {
-            if (!touching || window.innerWidth > 768) return;
+            if (!touching || window.innerWidth > 900) return;
             const dx = e.touches[0].clientX - touchStartX;
             const dy = e.touches[0].clientY - touchStartY;
-            // Right swipe with more horizontal than vertical movement
             if (dx > 60 && Math.abs(dx) > Math.abs(dy)) {
                 touching = false;
                 close();
@@ -133,22 +136,25 @@
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
-                if (window.innerWidth > 768 && nav.classList.contains('open')) close();
+                if (window.innerWidth > 900 && nav.classList.contains('open')) close();
             }, 150);
         });
     }
 
     /* ==========================================================
-       MOBILE DROPDOWN
-       Parent links with children toggle the dropdown on tap
-       instead of navigating. On desktop, hover handles it.
+       MOBILE DROPDOWN — Inline expand, no scroll
        ========================================================== */
     function initDropdownMobile() {
         document.querySelectorAll('.nav-dropdown > a').forEach(link => {
             link.addEventListener('click', e => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 900) {
                     e.preventDefault();
-                    link.parentElement.classList.toggle('open');
+                    const parent = link.parentElement;
+                    // Close other open dropdowns
+                    document.querySelectorAll('.nav-dropdown.open').forEach(other => {
+                        if (other !== parent) other.classList.remove('open');
+                    });
+                    parent.classList.toggle('open');
                 }
             });
         });
@@ -156,8 +162,6 @@
 
     /* ==========================================================
        HEADER SCROLL EFFECT
-       Adds .scrolled when user scrolls past 20px.
-       Throttled with requestAnimationFrame.
        ========================================================== */
     function initHeaderScroll() {
         const header = document.querySelector('.site-header');
@@ -178,8 +182,6 @@
 
     /* ==========================================================
        SMOOTH SCROLL FOR ANCHOR LINKS
-       Adjusts for fixed header height and updates URL hash
-       without triggering a jump.
        ========================================================== */
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -188,11 +190,7 @@
                 if (!id || id === '#') return;
 
                 let target;
-                try {
-                    target = document.querySelector(id);
-                } catch (_) {
-                    return;
-                }
+                try { target = document.querySelector(id); } catch (_) { return; }
                 if (!target) return;
 
                 e.preventDefault();
@@ -201,17 +199,13 @@
 
                 window.scrollTo({ top, behavior: 'smooth' });
 
-                if (history.replaceState) {
-                    history.replaceState(null, '', id);
-                }
+                if (history.replaceState) history.replaceState(null, '', id);
             });
         });
     }
 
     /* ==========================================================
        SCROLL REVEAL
-       Reveals [data-reveal] elements as they enter the viewport.
-       Respects prefers-reduced-motion.
        ========================================================== */
     function initReveal() {
         const els = document.querySelectorAll('[data-reveal]');
@@ -236,9 +230,6 @@
 
     /* ==========================================================
        ANIMATED COUNTERS
-       Ease-out cubic animation triggered when the element
-       scrolls into view. Supports data-prefix, data-suffix,
-       and data-duration.
        ========================================================== */
     function initCounters() {
         const counters = document.querySelectorAll('[data-count]');
@@ -286,15 +277,7 @@
     }
 
     /* ==========================================================
-       HERO SLIDER — Modern Cross-Fade Carousel
-       Features:
-       - Cross-fade transitions (stacked layers, opacity toggle)
-       - Auto-advance with configurable interval (data-slider-autoplay)
-       - Prev/next buttons + clickable dot indicators
-       - Keyboard navigation (Arrow Left / Arrow Right)
-       - Touch/swipe support on mobile (40px threshold)
-       - Pause on hover, focus, or hidden tab
-       - Full ARIA live region updates
+       HERO SLIDER
        ========================================================== */
     function initHeroSlider() {
         const slider = document.querySelector('.hero-slider');
@@ -309,137 +292,70 @@
         let timer = null;
         const INTERVAL = parseInt(slider.dataset.sliderAutoplay, 10) || 5000;
 
-        /* ---------- Core: go to specific slide ---------- */
         const goTo = (index) => {
-            // Wrap around with modulo
             i = (index + total) % total;
-
-            // Toggle active class on slides
             slides.forEach((slide, k) => {
                 slide.classList.toggle('active', k === i);
                 slide.setAttribute('aria-hidden', k !== i);
             });
-
-            // Toggle active state on dots
             dots.forEach((dot, k) => {
                 dot.classList.toggle('active', k === i);
                 dot.setAttribute('aria-selected', k === i);
             });
         };
 
-        /* ---------- Auto-advance controls ---------- */
-        const start = () => {
-            if (timer) return;
-            timer = setInterval(() => goTo(i + 1), INTERVAL);
-        };
+        const start = () => { if (timer) return; timer = setInterval(() => goTo(i + 1), INTERVAL); };
+        const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+        const restart = () => { stop(); start(); };
 
-        const stop = () => {
-            if (timer) {
-                clearInterval(timer);
-                timer = null;
-            }
-        };
+        prev?.addEventListener('click', () => { goTo(i - 1); restart(); });
+        next?.addEventListener('click', () => { goTo(i + 1); restart(); });
 
-        const restart = () => {
-            stop();
-            start();
-        };
-
-        /* ---------- Prev / Next buttons ---------- */
-        prev?.addEventListener('click', () => {
-            goTo(i - 1);
-            restart();
-        });
-
-        next?.addEventListener('click', () => {
-            goTo(i + 1);
-            restart();
-        });
-
-        /* ---------- Dot navigation ---------- */
         dots.forEach((dot, idx) => {
-            dot.addEventListener('click', () => {
-                goTo(idx);
-                restart();
-            });
+            dot.addEventListener('click', () => { goTo(idx); restart(); });
         });
 
-        /* ---------- Keyboard navigation ---------- */
         slider.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                goTo(i - 1);
-                restart();
-            } else if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                goTo(i + 1);
-                restart();
-            }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(i - 1); restart(); }
+            else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(i + 1); restart(); }
         });
 
-        /* ---------- Pause on focus (accessibility) ---------- */
         slider.addEventListener('focusin', stop);
         slider.addEventListener('focusout', (e) => {
-            // Only restart if focus left the slider entirely
-            if (!slider.contains(e.relatedTarget)) {
-                start();
-            }
+            if (!slider.contains(e.relatedTarget)) start();
         });
 
-        /* ---------- Pause on hover ---------- */
         slider.addEventListener('mouseenter', stop);
         slider.addEventListener('mouseleave', start);
 
-        /* ---------- Touch / swipe support ---------- */
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touching = false;
-
+        let touchStartX = 0, touchStartY = 0, touching = false;
         slider.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].clientX;
             touchStartY = e.changedTouches[0].clientY;
             touching = true;
-            stop(); // Pause while user interacts
+            stop();
         }, { passive: true });
-
         slider.addEventListener('touchend', (e) => {
             if (!touching) return;
             touching = false;
-
-            const touchEndX = e.changedTouches[0].clientX;
-            const touchEndY = e.changedTouches[0].clientY;
-            const dx = touchStartX - touchEndX;
-            const dy = touchStartY - touchEndY;
-
-            // Only trigger if horizontal swipe > 40px and more horizontal than vertical
+            const dx = touchStartX - e.changedTouches[0].clientX;
+            const dy = touchStartY - e.changedTouches[0].clientY;
             if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-                if (dx > 0) {
-                    goTo(i + 1); // Swipe left → next
-                } else {
-                    goTo(i - 1); // Swipe right → prev
-                }
+                dx > 0 ? goTo(i + 1) : goTo(i - 1);
             }
-            start(); // Resume auto-advance
+            start();
         }, { passive: true });
 
-        /* ---------- Pause when tab is hidden ---------- */
         document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                stop();
-            } else {
-                start();
-            }
+            document.hidden ? stop() : start();
         });
 
-        /* ---------- Initialize ---------- */
         goTo(0);
         start();
     }
 
     /* ==========================================================
        TESTIMONIAL SLIDER
-       Full slider with prev/next, dynamic dots, auto-advance,
-       keyboard navigation, and visibility pause.
        ========================================================== */
     function initTestimonialSlider() {
         const track = document.querySelector('.testimonial-track');
@@ -482,26 +398,13 @@
 
         track.parentElement.addEventListener('mouseenter', stop);
         track.parentElement.addEventListener('mouseleave', start);
-
-        document.addEventListener('visibilitychange', () => {
-            document.hidden ? stop() : start();
-        });
+        document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
 
         start();
     }
 
     /* ==========================================================
        SHOWCASE CAROUSEL
-       Full-featured image carousel with:
-       - Cross-fade transitions + Ken Burns zoom
-       - Auto-advance with progress bar animation
-       - Animated dot indicators with progress fill
-       - Dynamic slide counter (01 / 04)
-       - Keyboard navigation (Arrow Left / Arrow Right)
-       - Touch/swipe support (50px threshold)
-       - Pause on hover, focus, or hidden tab
-       - Full ARIA live region updates
-       - Counter-animated stats on each slide
        ========================================================== */
     function initShowcaseCarousel() {
         const carousel = document.querySelector('.showcase-carousel');
@@ -521,52 +424,38 @@
         let timer = null;
         const INTERVAL = parseInt(carousel.dataset.carouselAutoplay, 10) || 6000;
 
-        /* ---------- Core: go to slide ---------- */
         function goTo(index) {
             current = (index + total) % total;
 
-            // Slides
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === current);
                 slide.setAttribute('aria-hidden', i !== current);
             });
 
-            // Dots
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === current);
                 dot.setAttribute('aria-selected', i === current);
-                // Reset progress on non-active dots
                 if (i !== current) {
                     const bar = dot.querySelector('.dot-progress');
-                    if (bar) {
-                        bar.style.transition = 'none';
-                        bar.style.transform = 'scaleX(0)';
-                    }
+                    if (bar) { bar.style.transition = 'none'; bar.style.transform = 'scaleX(0)'; }
                 }
             });
 
-            // Counter
             if (counterCurrent) {
                 counterCurrent.textContent = String(current + 1).padStart(2, '0');
             }
 
-            // Restart progress animation
             resetProgress();
         }
 
-        /* ---------- Progress bar animation ---------- */
         function resetProgress() {
-            // Top progress bar
             if (progressBar) {
                 progressBar.style.transition = 'none';
                 progressBar.style.width = '0%';
-                // Force reflow to restart transition
                 void progressBar.offsetWidth;
                 progressBar.style.transition = `width ${INTERVAL}ms linear`;
                 progressBar.style.width = '100%';
             }
-
-            // Active dot progress fill
             const activeDot = dots[current];
             if (activeDot) {
                 const bar = activeDot.querySelector('.dot-progress');
@@ -580,7 +469,6 @@
             }
         }
 
-        /* ---------- Auto-advance controls ---------- */
         function start() {
             stop();
             timer = setInterval(() => goTo(current + 1), INTERVAL);
@@ -588,11 +476,7 @@
         }
 
         function stop() {
-            if (timer) {
-                clearInterval(timer);
-                timer = null;
-            }
-            // Freeze progress bar at current position
+            if (timer) { clearInterval(timer); timer = null; }
             if (progressBar) {
                 const computed = getComputedStyle(progressBar).width;
                 progressBar.style.transition = 'none';
@@ -600,98 +484,55 @@
             }
         }
 
-        function restart() {
-            stop();
-            start();
-        }
+        function restart() { stop(); start(); }
 
-        /* ---------- Prev / Next buttons ---------- */
-        prevBtn?.addEventListener('click', () => {
-            goTo(current - 1);
-            restart();
-        });
+        prevBtn?.addEventListener('click', () => { goTo(current - 1); restart(); });
+        nextBtn?.addEventListener('click', () => { goTo(current + 1); restart(); });
 
-        nextBtn?.addEventListener('click', () => {
-            goTo(current + 1);
-            restart();
-        });
-
-        /* ---------- Dot navigation ---------- */
         dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                goTo(i);
-                restart();
-            });
+            dot.addEventListener('click', () => { goTo(i); restart(); });
         });
 
-        /* ---------- Keyboard navigation ---------- */
         carousel.setAttribute('tabindex', '0');
         carousel.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                goTo(current - 1);
-                restart();
-            } else if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                goTo(current + 1);
-                restart();
-            }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); restart(); }
+            else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); restart(); }
         });
 
-        /* ---------- Pause on hover ---------- */
         carousel.addEventListener('mouseenter', stop);
         carousel.addEventListener('mouseleave', start);
 
-        /* ---------- Pause on focus (accessibility) ---------- */
         carousel.addEventListener('focusin', stop);
         carousel.addEventListener('focusout', (e) => {
             if (!carousel.contains(e.relatedTarget)) start();
         });
 
-        /* ---------- Touch / swipe support ---------- */
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touching = false;
-
+        let touchStartX = 0, touchStartY = 0, touching = false;
         carousel.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX;
             touchStartY = e.touches[0].clientY;
             touching = true;
             stop();
         }, { passive: true });
-
         carousel.addEventListener('touchend', (e) => {
             if (!touching) return;
             touching = false;
-
             const dx = touchStartX - e.changedTouches[0].clientX;
             const dy = touchStartY - e.changedTouches[0].clientY;
-
-            // Horizontal swipe > 50px and more horizontal than vertical
             if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-                if (dx > 0) {
-                    goTo(current + 1); // Swipe left → next
-                } else {
-                    goTo(current - 1); // Swipe right → prev
-                }
+                dx > 0 ? goTo(current + 1) : goTo(current - 1);
             }
             start();
         }, { passive: true });
 
-        /* ---------- Pause when tab is hidden ---------- */
-        document.addEventListener('visibilitychange', () => {
-            document.hidden ? stop() : start();
-        });
+        document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
 
-        /* ---------- Initialize ---------- */
         goTo(0);
         start();
     }
 
     /* ==========================================================
        FORM VALIDATION
-       Real-time + submit validation with character counter.
-       Includes honeypot check for bot detection.
        ========================================================== */
     function initFormValidation() {
         const form = document.getElementById('contactForm');
@@ -730,7 +571,6 @@
             }}
         };
 
-        // Character counter
         const messageEl = fields.message.el;
         const charCounter = document.getElementById('charCounter');
         if (messageEl && charCounter) {
@@ -843,8 +683,6 @@
 
     /* ==========================================================
        SCROLL TO TOP
-       Shows the button after 600px of scrolling.
-       Scrolls smoothly to top when clicked.
        ========================================================== */
     function initScrollTop() {
         const btn = document.querySelector('.scroll-top');
@@ -870,11 +708,41 @@
 
     /* ==========================================================
        CURRENT YEAR
-       Injects the current year into #currentYear.
        ========================================================== */
     function initYear() {
         const el = document.getElementById('currentYear');
         if (el) el.textContent = new Date().getFullYear();
+    }
+
+    /* ==========================================================
+       CHATBOT LOADER
+       Uses absolute path so it works from /services/* pages too.
+       ========================================================== */
+    function loadChatbot() {
+        const skipPaths = ['/admin', '/test', '/thank-you'];
+        const path = window.location.pathname;
+        if (skipPaths.some(p => path.startsWith(p))) return;
+        if (document.querySelector('script[data-lxbot]')) return;
+
+        // Detect if we're in a subdirectory (like /services/)
+        const inSubdir = /\/(services|pages)\//.test(path);
+        const basePath = inSubdir ? '../' : '';
+
+        if (!document.querySelector('link[data-lxbot-css]')) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = basePath + 'css/chatbot.css';
+            link.setAttribute('data-lxbot-css', '1');
+            link.onerror = () => console.warn('[LXBot] CSS failed to load.');
+            document.head.appendChild(link);
+        }
+
+        const script = document.createElement('script');
+        script.src = basePath + 'js/chatbot.js';
+        script.defer = true;
+        script.setAttribute('data-lxbot', '1');
+        script.onerror = () => console.warn('[LXBot] JS failed to load.');
+        document.body.appendChild(script);
     }
 
 })();
